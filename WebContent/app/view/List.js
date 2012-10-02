@@ -62,110 +62,14 @@ Ext.define("ECAT.view.List", {
     requires: ['Ext.data.Store', 'Ext.Img', 'Ext.MessageBox'],
     config: {
     	id : 'imagelist',
+    	xtype : 'img_list',
     	fullscreen : true,
     	scrollable : true,
     	store:'ListStore',
     	columnNum:3,
     	layout: {
 	        type: 'vbox'
-    	},
-		items : [{
-    		id : 'menu_btn',
-    		xtype : 'button',
-    		width: 90,
-    	    height: 90,
-    	    left: '5%',
-    	    bottom : 100,
-    	    icon : 'resources/images/icons/up_h.png',
-//    	    iconAlign : 'center',
-    	    iconCls : 'btn_up_icon',
-    	    handler : function(){
-		    	var menu_btn = Ext.getCmp('menu_btn'),
-		    		buttom_bar = Ext.getCmp('buttom_bar'),
-		    		top_bar = Ext.getCmp('top_bar');
-		    	menu_btn.hide();
-	        	buttom_bar.show();
-	        	top_bar.show();
-    	    }
-    	
-	    },{
-	    	id : 'top_bar',
-//	    	xtype : 'container',
-	    	xtype : 'panel',
-	    	floatingCls : 'c-x-floating',
-	    	cls : 'touming',
-	    	hidden : true,
-	    	width: '100%',
-	    	height: 90,
-	    	top : 0,
-	    	border : 1,
-	    	html : '<div align="center" vlign="center"> <h1> 全部 (8)</h1><div>'
-	    },{ 
-	    	id : 'buttom_bar',
-	    	xtype : 'panel',
-	    	cls : 'touming',
-	    	border : 0,
-	    	hidden : true,
-	    	width: "100%",
-	    	height: 110,
-	    	bottom :110,
-	    	items  : [{
-	    		xtype : 'button',
-	    		width: 90,
-    	  		height: 90,
-	    	    left: '5%',
-	    	    top : 10,
-	    	    icon : 'resources/images/icons/down_h.png',
-	    	    iconCls : 'btn_up_icon',
-	    	     handler : function(){
-	    	    	alert('123');
-	    	    }
-	    	},{
-	    		xtype : 'button',
-	    		width: 90,
-    	  		height: 90,
-	    	    left: '25%',
-	    	    top : 10,
-	    	    icon : 'resources/images/icons/all_h.png',
-	    	    iconCls : 'btn_up_icon',
-	    	    handler : function(){
-	    	    	alert('123');
-	    	    }
-	    	},{
-	    		xtype : 'button',
-	    		width: 90,
-    	  		height: 90,
-	    	    left: '45%',
-	    	    top : 10,
-	    	    icon : 'resources/images/icons/type_h.png',
-	    	    iconCls : 'btn_up_icon',
-	    	    handler : function(){
-	    	    	alert('123');
-	    	    }
-	    	},{
-	    		xtype : 'button',
-	    		width: 90,
-    	  		height: 90,
-	    	    left: '65%',
-	    	    top : 10,
-	    	    icon : 'resources/images/icons/fav_h.png',
-	    	    iconCls : 'btn_up_icon',
-	    	    handler : function(){
-	    	    	alert('123');
-	    	    }
-	    	},{
-	    		xtype : 'button',
-	    		width: 90,
-    	  		height: 90,
-	    	    left: '85%',
-	    	    top : 10,
-	    	    icon : 'resources/images/icons/link_h.png',
-	    	    iconCls : 'btn_up_icon',
-	    	    handler : function(){
-	    	    	alert('123');
-	    	    }
-	    	}]
-	    }]
+    	}
     },
     initialize: function() {
         	this.callParent(arguments);
