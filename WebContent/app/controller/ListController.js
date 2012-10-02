@@ -5,7 +5,7 @@ Ext.define('ECAT.controller.ListController', {
     	refs:{  
     	},
     	control: {
-            '#imagelist ecatviewimage': {
+            '#imagelist img': {
                 tap: 'showImage'
             }
         },

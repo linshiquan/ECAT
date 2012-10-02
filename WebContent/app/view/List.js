@@ -1,44 +1,8 @@
-Ext.define('Contact', {
-    extend: 'Ext.data.Model',
-    config: {
-        fields: ['src']
-    }
-});
 
-Ext.create('Ext.data.Store', {
-    id: 'ListStore',
-    model: 'Contact',
-    data: [
-        {src: '10'}, { src: '11'},{src:'118'},
-        {src: '119'},{ src: '12'},{src:'120'},
-        {src: '121'},{ src: '122'},{src:'123'},
-        {src: '142'},{ src: '143'},{src:'144'}
-    ]
-});
-Ext.define('ECAT.view.Image', {
-   	extend: 'Ext.Img',
-  	xtype : 'ecatviewimage',
-    config:{
-	    mode:true,
-	    height: 512,
-	    width: 256
-    },
-    
-    //sets up our tap event listener
-    initialize: function() {
-        this.callParent(arguments);
 
-        //this.element.on('tap', this.onTap, this);
-    }
-
-    //this is called whenever you tap on the image
-    /*onTap: function() {alert('as');
-       var action = Ext.create('Ext.app.Action', {url: 'view/' + this.getSrc()});
-        ECAT.getHistory().add(action,true);
-    }*/
-});
 Ext.define("ECAT.view.ImagePanel", {
     extend: 'Ext.Panel',
+    requires: ['Ext.Img'],
     config: {
     	img:[],
     	layout: {
@@ -50,24 +14,26 @@ Ext.define("ECAT.view.ImagePanel", {
 			var records = this.getConfig('img');
 			for (var i = 0; i < records.length; i++) {
 					var src = "resources/images/xiao/"+ records[i] + ".png";
-					var img = Ext.create('ECAT.view.Image', {
+					var img = Ext.create('Ext.Img', {
+						mode:true,
+					    height: 512,
+					    width: 256,
 					    src: src
 					});
 					this.add([img]);
 			}
     }
 });
+
 Ext.define("ECAT.view.List", {
     extend: 'Ext.Panel',
-    requires: ['Ext.data.Store', 'Ext.Img', 'Ext.MessageBox'],
+    requires: ['Ext.Img'],
     xtype : 'list_img',
     config: {
-    	id : 'imagelist',
-//    	fullscreen : true,
     	width: 768,
     	height: 1024,
     	scrollable : 'vertical',
-    	store:'ListStore',
+    	store:	Ext.create('ECAT.store.Imgs'),
     	columnNum:3,
     	layout: {
 	        type: 'vbox'
@@ -87,7 +53,7 @@ Ext.define("ECAT.view.List", {
 				var index = i * columnNum;
 				imgSrc = [];
 				for(var k = 0 ; k < columnNum ; k++){
-					imgSrc.push(records[index + k].get('src'));
+					imgSrc.push(records[index + k].get('name'));
 				}
 				panel = Ext.create('ECAT.view.ImagePanel', {
 					img : imgSrc
@@ -98,7 +64,7 @@ Ext.define("ECAT.view.List", {
 			var r = [];
 			for (var j = 0 ; j < surplus; j++) {
 				var index = start + j;
-				r.push(records[index].get('src'));
+				r.push(records[index].get('name'));
 			}
 			panel = Ext.create('ECAT.view.ImagePanel', {
 					img : r
