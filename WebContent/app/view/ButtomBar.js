@@ -1,6 +1,6 @@
 Ext.define("ECAT.view.ButtomBar", {
     extend: 'Ext.Panel',
-    requires: ['Ext.Button'],
+    requires: ['Ext.Button','ECAT.view.Itemize'],
     config : { 
     	id : 'buttom_bar',
     	cls : 'touming',
@@ -49,17 +49,10 @@ Ext.define("ECAT.view.ButtomBar", {
     	    icon : 'resources/images/icons/type_h.png',
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
-//    	    	scrollContainer: Class
-//    	    	scrollView: Class
-//    	    	scrollViewElement: Class
-//    	    	scrollerElement:
-    	    	Ext.getCmp('imagelist').add({
-    	    	    xtype: 'panel',
-    	    	    html: 'This is a centered and modal panel',
-    	    	    modal: true,
-    	    	    top : 150
-    	    	});
-    	    	Ext.getCmp('imagelist').getScrollable().getScroller().scrollTo(0,0); 
+    	    	var aa = Ext.create('ECAT.view.Main');
+    	    	Ext.Viewport.setActiveItem(aa);
+    	    	Ext.getCmp('list_itemize').show();
+//    	    	Ext.getCmp('imagelist').getScrollable().getScroller().scrollTo(0,0); 
     	    }
     	},{
     		xtype : 'button',

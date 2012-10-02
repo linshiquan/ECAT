@@ -2,24 +2,24 @@ Ext.create('Ext.data.Store', {
     id: 'itemizes',
     fields: ['id','name'],
     data: [
-        {src: '10'}, { src: '11'},{src:'118'},
-        {src: '119'},{ src: '12'},{src:'120'},
-        {src: '121'},{ src: '122'},{src:'123'},
-        {src: '142'},{ src: '143'},{src:'144'}
+        {id: 1 , name : '男士'},
+        {id: 2 , name : '女士'},
+        {id: 3 , name : '小孩'},
+        {id: 4 , name : '孕妇'}
     ]
 });
 
-Ext.define("ECAT.view.Itemize", {
+Ext.define('ECAT.view.Itemize', {
     extend: 'Ext.dataview.List',
+    xtype : 'list_itemize',
     config : {
-    	id : 'btn_menu',
+    	id : 'list_itemize',
     	modal : true,
-    	store : '',
-    	itemTpl : '<span>{}<span>',
-    	onItemTap : function(){
-    		
-    	}
-    	
-    		
+    	top : 90,
+	    width: 768,
+    	height: 824,
+    	scrollable : false,
+    	store : 'itemizes',
+    	itemTpl : '<span>{name}<span>'
     }
 });

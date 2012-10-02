@@ -1,13 +1,27 @@
-Ext.define('Contact', {
-    extend: 'Ext.data.Model',
-    config: {
-        fields: ['src']
-    }
-});
+//Ext.define("ECAT.view.Main", {
+//    extend: 'Ext.Panel',
+//    requires: ['ECAT.view.List', 'ECAT.view.Itemize'],
+//    config: {
+//    	id : 'pl_main',
+//    	width: 768,
+//    	height: 1024,
+//    	layout: {
+//	        type: 'card'
+//    	},
+////    	activeItem : 0,
+//    	items : [{
+//    		xtype : 'list_img'
+//    	},{
+//    		xtype : 'list_itemize',
+//    		hidden : true
+//    	}]
+//    }
+//});
+
 
 Ext.create('Ext.data.Store', {
-    id: 'ListStore',
-    model: 'Contact',
+    id: 'aa',
+    fields: ['src'],
     data: [
         {src: '10'}, { src: '11'},{src:'118'},
         {src: '119'},{ src: '12'},{src:'120'},
@@ -15,63 +29,21 @@ Ext.create('Ext.data.Store', {
         {src: '142'},{ src: '143'},{src:'144'}
     ]
 });
-Ext.define('ECAT.view.Image', {
-   	extend: 'Ext.Img',
-  	xtype : 'ecatviewimage',
-    config:{
-	    mode:true,
-	    height: 512,
-	    width: 256
-    },
-    
-    //sets up our tap event listener
-    initialize: function() {
-        this.callParent(arguments);
-
-        //this.element.on('tap', this.onTap, this);
-    }
-
-    //this is called whenever you tap on the image
-    /*onTap: function() {alert('as');
-       var action = Ext.create('Ext.app.Action', {url: 'view/' + this.getSrc()});
-        ECAT.getHistory().add(action,true);
-    }*/
-});
-Ext.define("ECAT.view.ImagePanel", {
-    extend: 'Ext.Panel',
-    config: {
-    	img:[],
-    	layout: {
-	        type: 'hbox'
-    	}
-    },
-    initialize: function() {
-        	this.callParent(arguments);
-			var records = this.getConfig('img');
-			for (var i = 0; i < records.length; i++) {
-					var src = "resources/images/xiao/"+ records[i] + ".png";
-					var img = Ext.create('ECAT.view.Image', {
-					    src: src
-					});
-					this.add([img]);
-			}
-    }
-});
-Ext.define("ECAT.view.List", {
+Ext.define("ECAT.view.Main", {
     extend: 'Ext.Panel',
     requires: ['Ext.data.Store', 'Ext.Img', 'Ext.MessageBox'],
     xtype : 'list_img',
     config: {
     	id : 'imagelist',
-//    	fullscreen : true,
     	width: 768,
     	height: 1024,
     	scrollable : 'vertical',
-    	store:'ListStore',
+    	store:'aa',
     	columnNum:3,
     	layout: {
 	        type: 'vbox'
-    	}
+    	},
+    	item : [{xtype : 'list_itemize'}]
     },
     initialize: function() {
         	this.callParent(arguments);
