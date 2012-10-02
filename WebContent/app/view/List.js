@@ -1,5 +1,3 @@
-
-
 Ext.define("ECAT.view.ImagePanel", {
     extend: 'Ext.Panel',
     requires: ['Ext.Img'],
@@ -18,7 +16,8 @@ Ext.define("ECAT.view.ImagePanel", {
 						mode:true,
 					    height: 512,
 					    width: 256,
-					    src: src
+					    src: src,
+					    fileName : records[i]
 					});
 					this.add([img]);
 			}
@@ -27,7 +26,7 @@ Ext.define("ECAT.view.ImagePanel", {
 
 Ext.define("ECAT.view.List", {
     extend: 'Ext.Panel',
-    requires: ['Ext.Img'],
+    requires: ['ECAT.store.Imgs','Ext.Img','ECAT.view.ImageDetailView'],
     xtype : 'list_img',
     config: {
     	width: 768,
