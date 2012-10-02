@@ -37,7 +37,14 @@ Ext.define("ECAT.view.ButtomBar", {
     	    icon : 'resources/images/icons/all_h.png',
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
-    	    	alert('123');
+    	    	var list_img = Ext.getCmp('imagelist');
+    	    	Ext.Viewport.animateActiveItem(
+    	    			list_img,  
+    	    			{  
+    	    			    type: 'slide',  
+    	    			    direction: 'up'  
+    	    			}
+    	    	    ); 
     	    }
     	},{
     		xtype : 'button',

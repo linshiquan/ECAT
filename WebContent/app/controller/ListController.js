@@ -20,7 +20,12 @@ Ext.define('ECAT.controller.ListController', {
     		store = Ext.getCmp(imagelist.id).getStore(),
     		index = store.find('name', filename);
     	console.log(filename);
-    	var imageDetailView = Ext.create('ECAT.view.ImageDetailView',{store : store});
+    	
+    	var imageDetailView = Ext.getCmp('imagedetailview');
+    	if(!imageDetailView){
+    		imageDetailView = Ext.create('ECAT.view.ImageDetailView',{store : store});
+    	}
+    	
     	filename = "resources/images/da/"+ filename + ".png";
     	imageDetailView.getComponent('imagedetail').setSrc(filename);
     	imageDetailView.getComponent('imagedetail').index = index;
