@@ -19,6 +19,8 @@ Ext.define('ECAT.controller.ListController', {
     	console.log(filename);
     	var imageDetailView = Ext.create('ECAT.view.ImageDetailView',{});
     	imageDetailView.getComponent('imagedetail').setSrc(filename);
+    	imageDetailView.getComponent('imagedetail1').setSrc(filename);
+    	imageDetailView.getComponent('imagedetail2').setSrc(filename);
         Ext.Viewport.animateActiveItem(
 	        imageDetailView,  
 			{  
