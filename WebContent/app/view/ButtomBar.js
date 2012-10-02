@@ -88,7 +88,19 @@ Ext.define("ECAT.view.ButtomBar", {
     	    icon : 'resources/images/icons/link_h.png',
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
-    	    	alert('123');
+				Ext.Viewport.animateActiveItem(
+					Ext.create("ECAT.view.ContactDetailView"),
+					{  
+				   		type: 'slide',  
+						direction: 'left'  
+					}
+				);
+				var btn_menu = Ext.getCmp('btn_menu'),
+				buttom_bar = Ext.getCmp('buttom_bar'),
+				top_bar = Ext.getCmp('top_bar');
+				btn_menu.show();
+				buttom_bar.hide();
+				top_bar.hide();
     	    }
     	}]
     }

@@ -43,3 +43,26 @@ border-radius: 0.3em;
 background-image: none;
 background-color: #03111A;
 }
+
+.contactdetailview {
+	background:url('../../resources/images/icons/contact_back.png') no-repeat left top; 
+    background-attachment:fixed;
+	background-repeat: no-repeat;
+	background-position: center;
+	display: block;
+}
+
+.contactdetailview .x-form-label, .contactdetailview .x-field, .contactdetailview .x-toolbar-dark, .contactdetailview .x-form-field {
+	background-color:black;
+	color: white;
+	background-image: none;
+	background:transparent;
+	font-size: 120%;
+	/*filter: alpha(Opacity=0);
+	-moz-opacity: 0.0;
+	opacity: 0.0;*/
+}
+
+.contactdetailview .x-title {
+	width: 100%;
+}
