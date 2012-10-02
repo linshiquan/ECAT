@@ -1,20 +1,41 @@
-.x-panel .touming {
+.x-panel.touming {
 filter: alpha(Opacity=80);
 -moz-opacity: 0.5;
-opacity: 0.5;
+opacity: 0.8;
 z-index: 100;
 background-color: white;
 }
 
+.x-button.x-button-plain .x-button-icon {
+-webkit-background-size: 90px 90px;;  
+width: 90px;
+height: 90px;
+	
+}
+
+.x-button.x-button-plain{
+background: none;
+border: 0 none;
+-webkit-border-radius: none;
+border-radius: none;
+min-height: 0;
+text-shadow: none;
+line-height: auto;
+height: 1.9em;
+padding: 0em 0em;
+}
+
 .x-button .btn_up_icon {
-	background-image: background-image: url('resources/images/icons/up_h.png') ; 
+	background-image: url('resources/images/icons/up_h.png');
+	-webkit-background-size: 110px 110px;;  
 	width: 90px;
 	height: 90px;
+	background-repeat: no-repeat;
 	background-position: center;
 	display: block;
 }
 
-.x-panel .x-floating {
+.x-panel.x-floating {
 padding: 0px;
 -webkit-border-radius: 0.3em;
 border-radius: 0.3em;
