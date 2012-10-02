@@ -65,6 +65,7 @@ Ext.define("ECAT.view.List", {
     	fullscreen : true,
     	scrollable : true,
     	store:'ListStore',
+    	columnNum:3,
     	layout: {
 	        type: 'vbox'
     	}
@@ -74,17 +75,23 @@ Ext.define("ECAT.view.List", {
 			var store = Ext.getStore(this.getConfig('store')),
 			records = store.getRange(),
 			recordsLn = records.length,
-			multiple = recordsLn / 3,
-			surplus = recordsLn % 3,
+			columnNum = this.getConfig('columnNum'),
+			multiple = recordsLn / columnNum,
+			surplus = recordsLn % columnNum,
+			imgSrc = [],
 			panel;
 			for (var i = 0; i < multiple; i++) {
-				var index = i * 3;
+				var index = i * columnNum;
+				imgSrc = [];
+				for(var k = 0 ; k < columnNum ; k++){
+					imgSrc.push(records[index + k].get('src'));
+				}
 				panel = Ext.create('ECAT.view.ImagePanel', {
-					img : [records[index].get('src'),records[index + 1].get('src'),records[index + 2].get('src')]
+					img : imgSrc
 				});
 				this.add(panel);
 			}
-			var start = multiple * 3;
+			var start = multiple * columnNum;
 			var r = [];
 			for (var j = 0 ; j < surplus; j++) {
 				var index = start + j;
