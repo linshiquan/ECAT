@@ -1,5 +1,4 @@
 Ext.define('ECAT.store.Imgs', {
-	autoLoad: true,
 	extend: 'Ext.data.Store',
     config: {
         model: 'ECAT.model.Img',
@@ -10,7 +9,8 @@ Ext.define('ECAT.store.Imgs', {
                 type: 'json',
                 rootProperty: 'imgs'
             }
-        }
+        },
+		autoLoad: true
     }
 });
 

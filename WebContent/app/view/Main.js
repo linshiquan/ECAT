@@ -1,6 +1,6 @@
 Ext.define("ECAT.view.Main", {
     extend: 'Ext.Panel',
-    requires: ['ECAT.view.List','ECAT.view.Itemize','ECAT.store.Imgs'],
+    requires: ['ECAT.view.List','ECAT.view.Itemize'],
     config: {
     	width: 768,
     	height: 1024,

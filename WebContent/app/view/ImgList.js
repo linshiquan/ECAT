@@ -26,7 +26,7 @@ Ext.define("ECAT.view.ImagePanel", {
 
 Ext.define("ECAT.view.ImgList", {
     extend: 'Ext.Container',
-    requires: ['Ext.Img'],
+    requires: ['Ext.Img','ECAT.store.Imgs'],
     xtype : 'list_img',
     config: {
     	width: 768,

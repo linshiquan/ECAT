@@ -23,15 +23,15 @@ Ext.define('ECAT.view.Itemize', {
     	height: 824,
     	scrollable : false,
     	store : 'itemizes',
-    	itemTpl : '<span>{name}<span>'
+    	itemTpl : '<span>{name}<span>',
+	    listeners: {
+	        itemtap: function(dv,index,target,record,e,eOpts) {
+	        	var list_img = Ext.getCmp('list_img_type'),
+	        		store = list_img.getConfig('store');
+	        	store.filter("type",record.get('id'));
+				list_img.refresh();
+	            dv.hide();
+	        }
+	    }
     },
-    listeners: {
-        itemtap: function(dv,index,target,record,e,eOpts) {
-        	var list_img = Ext.getCmp('list_img_type'),
-        		store = list_img.getConfig('store');
-        	store.filter("type",record.get('id'));
-			list_img.refresh();
-            dv.hide();
-        }
-    }
 });
