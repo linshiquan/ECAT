@@ -1,12 +1,30 @@
 Ext.define('ECAT.store.Imgs', {
+	autoLoad: true,
 	extend: 'Ext.data.Store',
     config: {
         model: 'ECAT.model.Img',
-        data: [
-           {name: '10',type : 1}, { name: '11',type : 1},{name:'118',type : 1},
-           {name: '119',type : 1},{ name: '12',type : 1},{name:'120',type : 1},
-           {name: '121',type : 1},{ name: '122',type : 1},{name:'123',type : 1},
-           {name: '142',type : 1},{ name: '143',type : 1},{name:'144',type : 1}
-       ]
+        proxy: {
+            type: 'ajax',
+            url : 'data.json',
+            reader: {
+                type: 'json',
+                rootProperty: 'imgs'
+            }
+        }
     }
 });
+
+//Ext.create('Ext.data.Store',{
+//	id : 'st_img',
+//	autoLoad: true,
+//    model: 'ECAT.model.Img',
+//    proxy: {
+//        type: 'ajax',
+//        url : 'data.json',
+//        reader: {
+//            type: 'json',
+//            rootProperty: 'imgs'
+//        }
+//    }
+//});
+

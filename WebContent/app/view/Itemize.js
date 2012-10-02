@@ -1,12 +1,15 @@
 Ext.create('Ext.data.Store', {
     id: 'itemizes',
     fields: ['id','name'],
-    data: [
-        {id: 1 , name : '男士'},
-        {id: 2 , name : '女士'},
-        {id: 3 , name : '小孩'},
-        {id: 4 , name : '孕妇'}
-    ]
+    proxy: {
+        type: 'ajax',
+        url : 'data.json',
+        reader: {
+            type: 'json',
+            rootProperty: 'itemizes'
+        }
+    },
+    autoLoad: true
 });
 
 Ext.define('ECAT.view.Itemize', {
@@ -21,5 +24,14 @@ Ext.define('ECAT.view.Itemize', {
     	scrollable : false,
     	store : 'itemizes',
     	itemTpl : '<span>{name}<span>'
+    },
+    listeners: {
+        itemtap: function(dv,index,target,record,e,eOpts) {
+        	var list_img = Ext.getCmp('list_img_type'),
+        		store = list_img.getConfig('store');
+        	store.filter("type",record.get('id'));
+			list_img.refresh();
+            dv.hide();
+        }
     }
 });

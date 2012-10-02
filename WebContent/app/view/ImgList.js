@@ -1,5 +1,5 @@
 Ext.define("ECAT.view.ImagePanel", {
-    extend: 'Ext.Container',
+    extend: 'Ext.Panel',
     requires: ['Ext.Img'],
     config: {
     	img:[],
@@ -24,17 +24,15 @@ Ext.define("ECAT.view.ImagePanel", {
     }
 });
 
-Ext.define("ECAT.view.List", {
+Ext.define("ECAT.view.ImgList", {
     extend: 'Ext.Container',
-    requires: ['ECAT.store.Imgs','Ext.Img','ECAT.view.ImageDetailView'],
+    requires: ['Ext.Img'],
     xtype : 'list_img',
     config: {
     	width: 768,
     	height: 1024,
     	scrollable : 'vertical',
     	store:	Ext.create('ECAT.store.Imgs'),
-//    	store : 'st_img',
-    	columnNum:3,
     	layout: {
 	        type: 'vbox'
     	}
@@ -49,31 +47,31 @@ Ext.define("ECAT.view.List", {
 			surplus = recordsLn % columnNum,
 			imgSrc = [],
 			panel;
-			for (var i = 0; i < multiple; i++) {
-				var index = i * columnNum;
-				imgSrc = [];
-				for(var k = 0 ; k < columnNum ; k++){
-					imgSrc.push(records[index + k].get('name'));
-				}
-				panel = Ext.create('ECAT.view.ImagePanel', {
-					img : imgSrc
+			for (var i = 0; i < recordsLn; i++) {
+				this.add({
+					xtype : 'container',
+					layout: 'hbox',
+					defaults: {
+						xtype: 'img',
+						mode:true,
+					    height: 512,
+					    width: 256,
+		            },
+			    	items : [{
+			    		fileName: records[index + k].get('name'),
+			    		src : "resources/images/xiao/"+ records[index + k].get('name') + ".png"
+			    		
+			    	},{
+			    		fileName: records[index + k].get('name'),
+			    		src : "resources/images/xiao/"+ records[index + k].get('name') + ".png"
+			    	},{
+			    		fileName: records[index + k].get('name'),
+			    		src : "resources/images/xiao/"+ records[index + k].get('name') + ".png"
+			    	}]
 				});
-				this.add(panel);
 			}
-			var start = multiple * columnNum;
-			var r = [];
-			for (var j = 0 ; j < surplus; j++) {
-				var index = start + j;
-				r.push(records[index].get('name'));
-			}
-			panel = Ext.create('ECAT.view.ImagePanel', {
-					img : r
-				});
-			this.add(panel);
     },
-    refresh : function(){
-    	this.removeAll(true,true); 
-    	this.initialize();
+    dosomething : function(){
     }
 });
 

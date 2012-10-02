@@ -4,11 +4,14 @@ Ext.define("ECAT.view.Main", {
     config: {
     	width: 768,
     	height: 1024,
-    	scrollable : 'vertical',
-    	item : [{
+    	scrollable : false,
+    	items : [{
     		xtype : 'list_img',
-    		id : '123'
-    	}]
+    		id : 'list_img_type'
+    	},{
+    		xtype : 'list_itemize',
+    		id : 'list_itemize'
+    	}],
     }
 });
 

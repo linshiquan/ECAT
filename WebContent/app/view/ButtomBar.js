@@ -55,16 +55,20 @@ Ext.define("ECAT.view.ButtomBar", {
     	    icon : 'resources/images/icons/type_h.png',
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
-    	    	var aa = Ext.create('ECAT.view.Main');
-    	    	Ext.Viewport.animateActiveItem(
-    	    	        aa,  
-    	    			{  
-    	    			    type: 'slide',  
-    	    			    direction: 'left'  
-    	    			}
-    	    	    ); 
-//    	    	Ext.getCmp('list_itemize').show();
-//    	    	Ext.getCmp('imagelist').getScrollable().getScroller().scrollTo(0,0); 
+    	    	var pl_main = Ext.getCmp('pl_main');
+    	    	if(!pl_main){
+    	    		Ext.create('ECAT.view.Main',{id : 'pl_main'});
+    	    	}
+    	    	
+    	    	Ext.getCmp('list_itemize').hide();	
+    	    	Ext.Viewport.setActiveItem(pl_main); 
+    	    	setTimeout(function(){
+    	    		Ext.getCmp('list_itemize').show({  
+    	    			type: 'slide',  
+    	    			direction: 'up'  
+    	    		});
+    	    	},500);
+    	    	Ext.getCmp('imagelist').getScrollable().getScroller().scrollTo(0,0); 
     	    }
     	},{
     		xtype : 'button',
