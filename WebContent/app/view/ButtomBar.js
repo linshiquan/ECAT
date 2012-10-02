@@ -50,7 +50,13 @@ Ext.define("ECAT.view.ButtomBar", {
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
     	    	var aa = Ext.create('ECAT.view.Main');
-    	    	Ext.Viewport.setActiveItem(aa);
+    	    	Ext.Viewport.animateActiveItem(
+    	    	        aa,  
+    	    			{  
+    	    			    type: 'slide',  
+    	    			    direction: 'left'  
+    	    			}
+    	    	    ); 
 //    	    	Ext.getCmp('list_itemize').show();
 //    	    	Ext.getCmp('imagelist').getScrollable().getScroller().scrollTo(0,0); 
     	    }
