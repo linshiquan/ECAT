@@ -41,8 +41,7 @@ Ext.define("ECAT.view.ButtomBar", {
     	    	Ext.Viewport.animateActiveItem(
     	    			list_img,  
     	    			{  
-    	    			    type: 'slide',  
-    	    			    direction: 'up'  
+    	    			    type: 'pop',  
     	    			}
     	    	    ); 
     	    }
