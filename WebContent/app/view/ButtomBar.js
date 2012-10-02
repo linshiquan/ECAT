@@ -1,6 +1,6 @@
 Ext.define("ECAT.view.ButtomBar", {
     extend: 'Ext.Panel',
-    requires: ['Ext.Button','ECAT.view.Itemize'],
+    requires: ['Ext.Button','ECAT.view.Main',],
     config : { 
     	id : 'buttom_bar',
     	cls : 'touming',
@@ -51,7 +51,7 @@ Ext.define("ECAT.view.ButtomBar", {
     	    handler : function(){
     	    	var aa = Ext.create('ECAT.view.Main');
     	    	Ext.Viewport.setActiveItem(aa);
-    	    	Ext.getCmp('list_itemize').show();
+//    	    	Ext.getCmp('list_itemize').show();
 //    	    	Ext.getCmp('imagelist').getScrollable().getScroller().scrollTo(0,0); 
     	    }
     	},{

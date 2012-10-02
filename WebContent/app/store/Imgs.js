@@ -1,13 +1,12 @@
 Ext.define('ECAT.store.Imgs', {
 	extend: 'Ext.data.Store',
-
     config: {
         model: 'ECAT.model.Img',
         data: [
-           {src: '10'}, { src: '11'},{src:'118'},
-           {src: '119'},{ src: '12'},{src:'120'},
-           {src: '121'},{ src: '122'},{src:'123'},
-           {src: '142'},{ src: '143'},{src:'144'}
+           {name: '10',type : 1}, { name: '11',type : 1},{name:'118',type : 1},
+           {name: '119',type : 1},{ name: '12',type : 1},{name:'120',type : 1},
+           {name: '121',type : 1},{ name: '122',type : 1},{name:'123',type : 1},
+           {name: '142',type : 1},{ name: '143',type : 1},{name:'144',type : 1}
        ]
     }
 });
