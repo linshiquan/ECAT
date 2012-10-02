@@ -5,7 +5,7 @@ Ext.define('ECAT.controller.ListController', {
     	refs:{  
     	},
     	control: {
-            '#imagelist ecatviewimage': {
+            '#imagelist img': {
                 tap: 'showImage'
             }
         },
@@ -18,6 +18,7 @@ Ext.define('ECAT.controller.ListController', {
      	var filename = img.getSrc();
     	console.log(filename);
     	var imageDetailView = Ext.create('ECAT.view.ImageDetailView',{});
+    	filename = "resources/images/da/"+ filename + ".png";
     	imageDetailView.getComponent('imagedetail').setSrc(filename);
     	imageDetailView.getComponent('imagedetail1').setSrc(filename);
     	imageDetailView.getComponent('imagedetail2').setSrc(filename);
