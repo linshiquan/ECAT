@@ -1,3 +1,48 @@
+Ext.define("ECAT.view.Image", {
+    extend: 'Ext.Img',
+    xtype:'ecatimage',
+    config: {
+    	mode:true,
+		width: 768,
+		height: 1024,
+		draggable :new Ext.util.Draggable({})
+    },
+	beforeInitialize: function() {
+        this.element.on({
+            pinch: 'onPinch',
+            scope: this
+        });
+    },
+  	onPinch : function(e) {
+		var me = this, 
+		target = e.getTarget(), 
+		item = Ext.getCmp(target.id);
+		alert('e.scale =  '+e.scale);
+		//保持居中
+		me.setTop((Ext.Viewport.getWindowHeight() - e.scale * item.getHeight() ) / 2 );
+    	me.setLeft((Ext.Viewport.getWindowWidth() - e.scale * item.getWidth() ) / 2);
+		me.setWidth(e.scale * item.getWidth());
+    	me.setHeight(e.scale * item.getHeight());
+	}/*,
+	onTap : function(e) {
+		var me = this, 
+		target = e.getTarget(), 
+		item = Ext.getCmp(target.id);
+		e.scale = 0.9;
+		//保持居中
+		alert('e.scale =  '+e.scale);
+		alert('Ext.Viewport.getWindowHeight() =  '+Ext.Viewport.getWindowHeight());
+		alert('Ext.Viewport.getWindowWidth() =  '+Ext.Viewport.getWindowWidth());
+		alert('top =  '+(Ext.Viewport.getWindowHeight() - e.scale * item.getHeight() ) / 2 );
+		alert('left =  '+(Ext.Viewport.getWindowWidth() - e.scale * item.getWidth() ) / 2);
+		//me.setTop((Ext.Viewport.getWindowHeight() - e.scale * item.getHeight() ) / 2 );
+    	//me.setLeft((Ext.Viewport.getWindowWidth() - e.scale * item.getWidth() ) / 2);
+		me.setTop((1024 - e.scale * item.getHeight() ) / 2 );
+    	me.setLeft((768 - e.scale * item.getWidth() ) / 2);
+		me.setWidth(e.scale * item.getWidth());
+    	me.setHeight(e.scale * item.getHeight());
+	}*/
+});
 Ext.define("ECAT.view.ImageDetailView", {
     extend: 'Ext.Carousel',
     xtype:'imagedetailview',
@@ -6,22 +51,13 @@ Ext.define("ECAT.view.ImageDetailView", {
     	id:'imagedetailview',
     	indicator:false,
     	items : [{
-    		xtype:'image',
-    		mode:true,
-    		width: 768,
-    		height: 1024,
+    		xtype:'ecatimage',
     		id : 'imagedetail1'
     	},{
-    		xtype:'image',
-    		mode:true,
-    		width: 768,
-    		height: 1024,
+    		xtype:'ecatimage',
     		id : 'imagedetail'
     	},{
-    		xtype:'image',
-    		mode:true,
-    		width: 768,
-    		height: 1024,
+    		xtype:'ecatimage',
     		id : 'imagedetail2'
     	}],
     	fullscreen : true
