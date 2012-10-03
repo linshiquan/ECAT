@@ -1,10 +1,9 @@
 Ext.define("ECAT.view.ButtomBar", {
     extend: 'Ext.Panel',
-    requires: ['Ext.Button','ECAT.view.Main',],
+    requires: ['Ext.Button','ECAT.view.Itemize'], //'ECAT.view.Main',
     config : { 
     	id : 'buttom_bar',
     	cls : 'touming',
-//    	border : 0,
     	hidden : true,
     	width: "100%",
     	height: 110,
@@ -18,7 +17,7 @@ Ext.define("ECAT.view.ButtomBar", {
     	    ui : 'plain',
     	    icon : 'resources/images/icons/down_h.png',
     	    iconCls : 'btn_up_icon',
-    	     handler : function(){
+    	    handler : function(){
     	    	 var btn_menu = Ext.getCmp('btn_menu'),
 	 	    		buttom_bar = Ext.getCmp('buttom_bar'),
 	 	    		top_bar = Ext.getCmp('top_bar');
@@ -37,13 +36,17 @@ Ext.define("ECAT.view.ButtomBar", {
     	    icon : 'resources/images/icons/all_h.png',
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
-    	    	var list_img = Ext.getCmp('imagelist');
-    	    	Ext.Viewport.animateActiveItem(
-    	    			list_img,  
-    	    			{  
-    	    			    type: 'pop',  
-    	    			}
-    	    	    ); 
+    	    	var topbar = Ext.getCmp('top_bar'),
+    	    		pl_main = Ext.getCmp('pl_main'),
+    	    		list_img = Ext.getCmp('list_img'),
+    	    		store = Ext.getStore(list_img.getConfig('store')),
+    	    		list_itemize = Ext.getCmp('list_itemize');
+    	    	topbar.setTitle('全部(150)');
+    	    	list_itemize.hide();
+        		store.clearFilter(true);
+        		store.load();
+        		list_img.refresh();
+    	    	Ext.Viewport.setActiveItem(pl_main); 
     	    }
     	},{
     		xtype : 'button',
@@ -55,21 +58,32 @@ Ext.define("ECAT.view.ButtomBar", {
     	    icon : 'resources/images/icons/type_h.png',
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
-    	    	var pl_main = Ext.getCmp('pl_main');
-    	    	if(!pl_main){
-    	    		Ext.create('ECAT.view.Main',{id : 'pl_main'});
+//    	    	var pl_main = Ext.getCmp('pl_main');
+//    	    	if(!pl_main){
+//    	    		Ext.create('ECAT.view.Main',{id : 'pl_main'});
+//    	    	}
+//    	    	
+//    	    	Ext.getCmp('list_itemize').hide();	
+//    	    	Ext.Viewport.setActiveItem(pl_main); 
+//    	    	setTimeout(function(){
+//    	    		Ext.getCmp('list_itemize').show({  
+//    	    			type: 'slide',  
+//    	    			direction: 'up'  
+//    	    		});
+//    	    	},500);
+    	    	var topbar = Ext.getCmp('top_bar'),
+    	    		pl_main = Ext.getCmp('pl_main'), 
+    	    		list_itemize = Ext.getCmp('list_itemize');
+    	    	topbar.setTitle('分类选择');
+    	    	Ext.Viewport.setActiveItem(pl_main);
+    	    	if(!list_itemize){
+    	    		list_itemize = Ext.create('ECAT.view.Itemize',{id : 'list_itemize'});
     	    	}
-    	    	
-    	    	Ext.getCmp('list_itemize').hide();	
-    	    	Ext.Viewport.setActiveItem(pl_main); 
-    	    	setTimeout(function(){
-    	    		Ext.getCmp('list_itemize').show({  
-    	    			type: 'slide',  
-    	    			direction: 'up'  
-    	    		});
-    	    	},500);
-    	    	Ext.getCmp('imagelist').getScrollable().getScroller().scrollTo(0,0); 
-    	    }
+    	    	list_itemize.show({  
+	    			type: 'slide',  
+	    			direction: 'up'  
+	    		});
+	    	}
     	},{
     		xtype : 'button',
     		width: 90,

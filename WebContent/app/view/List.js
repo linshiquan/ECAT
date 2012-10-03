@@ -24,16 +24,30 @@ Ext.define("ECAT.view.ImagePanel", {
     }
 });
 
+Ext.create('Ext.data.Store',{
+	id : 'st_img',
+	model: 'ECAT.model.Img',
+	proxy: {
+	    type: 'ajax',
+	    url : 'data.json',
+	    reader: {
+	        type: 'json',
+	        rootProperty: 'imgs'
+	    }
+	},
+	autoLoad: true
+});
+
 Ext.define("ECAT.view.List", {
     extend: 'Ext.Container',
-    requires: ['ECAT.store.Imgs','Ext.Img','ECAT.view.ImageDetailView'],
+    requires: ['Ext.data.Store','Ext.Img','ECAT.view.ImageDetailView'],
     xtype : 'list_img',
     config: {
     	width: 768,
     	height: 1024,
     	scrollable : 'vertical',
-    	store:	Ext.create('ECAT.store.Imgs'),
-//    	store : 'st_img',
+//    	store:	Ext.create('ECAT.store.Imgs'),
+    	store : 'st_img',
     	columnNum:3,
     	layout: {
 	        type: 'vbox'
@@ -45,7 +59,7 @@ Ext.define("ECAT.view.List", {
 			records = store.getRange(),
 			recordsLn = records.length,
 			columnNum = this.getConfig('columnNum'),
-			multiple = recordsLn / columnNum,
+			multiple = parseInt(recordsLn / columnNum),
 			surplus = recordsLn % columnNum,
 			imgSrc = [],
 			panel;

@@ -1,9 +1,32 @@
-.x-panel.touming {
+.x-container.touming, .x-panel.touming, .x-list.touming {
 filter: alpha(Opacity=80);
 -moz-opacity: 0.5;
 opacity: 0.8;
 z-index: 100;
 background-color: white;
+}
+
+
+.x-container.topstrip {
+	background-image: url('/ecat/resources/images/icons/topstrip.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #03111A;
+	-webkit-background-size: 768px 20px; 
+}
+
+.x-title.toptitle{
+font-size: 2.0em;
+color:white;
+}
+
+
+.x-container.toolbar {
+	background-image: url('/ecat/resources/images/icons/toolbar.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: #03111A;
+	-webkit-background-size: 768px 90px; 
 }
 
 .x-button.x-button-plain .x-button-icon {
@@ -27,7 +50,7 @@ padding: 0em 0em;
 
 .x-button .btn_up_icon {
 	background-image: url('resources/images/icons/up_h.png');
-	-webkit-background-size: 110px 110px;;  
+	-webkit-background-size: 110px 110px;  
 	width: 90px;
 	height: 90px;
 	background-repeat: no-repeat;
