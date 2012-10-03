@@ -3,10 +3,10 @@ Ext.define('ECAT.controller.ListController', {
 
     config: {
     	refs:{
-    		imagelist : '#imagelist'
+    		imagelist : '#list_img'
     	},
     	control: {
-            '#imagelist img': {
+            '#list_img img': {
                 tap: 'showImage'
             }
         },
@@ -17,7 +17,7 @@ Ext.define('ECAT.controller.ListController', {
     //opens a new window to show the file
      showImage: function(img) {
      	var filename = img.fileName,
-    		store = Ext.getCmp(imagelist.id).getStore(),
+    		store = Ext.getStore(this.getImagelist().getConfig('store')),
     		index = store.find('name', filename);
     	console.log(filename);
     	
