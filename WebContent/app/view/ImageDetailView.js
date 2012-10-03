@@ -26,42 +26,56 @@ Ext.define("ECAT.view.ImageDetailView", {
     	}],
     	fullscreen : true
     },
-    onDragEnd : function(e) {
-		this.callParent(arguments);
-		var newImagePanel = Ext.create('Ext.Img', {
-					mode : true,
-					width: 768,
-    				height: 1024
-				});
-		var activeIndex = this.getActiveIndex(),
-			store = this.store,
-			index = this.getComponent(activeIndex).index;
-		// œÚ”“ª¨
-		if (this.animationDirection == -1) {
-			this.removeAt(activeIndex - 2);
-			var last = index -1;
-			if(last < 0){
-    			last = store.getCount() - 1;
-    		}
-    		var lastModel = store.getAt(last);
-			newImagePanel.setSrc("resources/images/da/"+ lastModel.get('name') + ".png");
-			newImagePanel.index = last;
-			this.insertLast(newImagePanel);
-		} else if (this.animationDirection = 1) {
-			// œÚ◊Ûª¨
-			this.removeAt(activeIndex + 2);
-			var next = index + 1;
-	    	if(next == store.getCount()){
-	    		next = 0;
+    initialize: function(){
+	    var me = this;
+	    me.callParent();
+	    
+	    var isEven = function(nb){
+	        return (nb%2 == 0) ? true : false;
+	    };
+	    
+	    me.nbItems = me.getItems().length;
+	    me.interval = (isEven(me.nbItems) ? me.nbItems/2 : (me.nbItems-1)/2);
+	    me.setActiveItem(me.interval);
+	    
+	    me.on('activeitemchange', me.onActiveItemChange, me);
+	   // if(me.delay > 0)
+	    //  me.timeout = Ext.defer(me.rotate, me.delay, me);
+  	},
+  	onActiveItemChange: function(c,v,ov){
+	    var me = this;
+	    
+	   // if (me.timeout){
+	   //   clearTimeout(me.timeout);
+	    //  me.timeout = Ext.defer(me.rotate, me.delay, me);
+	    //}
+	    
+	    var active = c.getActiveIndex(),
+	        direction = (c.getItems().indexOf(v) > c.getItems().indexOf(ov)) ? 'forward' : 'backward',
+	        container = (direction=='forward') ? c.getAt(active-me.interval-1) : c.getAt(active+me.interval+1),
+	        store = this.store,
+			index = this.getComponent(active).index;
+	    
+	    c.remove(container, false);
+	    
+	    if(direction=='forward'){
+	    	var next = index + 2;
+	    	if(next >= store.getCount()){
+	    		next = next - store.getCount();
 	    	}
 	    	var nextModel = store.getAt(next);
-	    	newImagePanel.setSrc("resources/images/da/"+ nextModel.get('name') + ".png");
-	    	newImagePanel.index = next;
-			this.insertFirst(newImagePanel);
-		}
-	}
+	    	container.setSrc("resources/images/da/"+ nextModel.get('name') + ".png");
+	    	container.index = next;
+	    	 c.add(container);
+	    } else{
+	    	var last = index - 2;
+			if(last < 0){
+    			last = store.getCount() + last;
+    		}
+    		var lastModel = store.getAt(last);
+			container.setSrc("resources/images/da/"+ lastModel.get('name') + ".png");
+			container.index = last;
+	    	c.insert(0,container);
+	    }
+  }
 });
-
-// Ext.create("ECAT.view.ImageDetailView",{
-	// id:'imagedetailview'
-//});

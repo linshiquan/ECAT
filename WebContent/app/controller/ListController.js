@@ -3,7 +3,8 @@ Ext.define('ECAT.controller.ListController', {
 
     config: {
     	refs:{
-    		imagelist : '#list_img'
+    		imagelist : '#list_img',
+    		mainPlan : '#pl_main'
     	},
     	control: {
             '#list_img img': {
@@ -43,7 +44,8 @@ Ext.define('ECAT.controller.ListController', {
     	var nextModel = store.getAt(next);
     	imageDetailView.getComponent('imagedetail2').setSrc("resources/images/da/"+ nextModel.get('name') + ".png");
     	imageDetailView.getComponent('imagedetail2').index = next;
-        Ext.Viewport.animateActiveItem(
+    	//imageDetailView.setActiveItem(imageDetailView.getComponent('imagedetail'));
+       	this.getMainPlan().animateActiveItem(
 	        imageDetailView,  
 			{  
 			    type: 'slide',  
