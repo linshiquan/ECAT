@@ -89,3 +89,11 @@ background-color: #03111A;
 .contactdetailview .x-title {
 	width: 100%;
 }
+
+.x-button.black{
+	color : white;
+	background-image: -webkit-linear-gradient(top, #313131,#1A1919 3%,black);
+	overflow: visible;
+	border: 1px solid black;
+	border-top-color: black;
+}

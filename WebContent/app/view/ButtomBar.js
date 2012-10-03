@@ -1,6 +1,6 @@
 Ext.define("ECAT.view.ButtomBar", {
     extend: 'Ext.Panel',
-    requires: ['Ext.Button','ECAT.view.Itemize'], //'ECAT.view.Main',
+    requires: ['Ext.Button','ECAT.view.Itemize','ECAT.view.Favorite'], //'ECAT.view.Main',
     config : { 
     	id : 'buttom_bar',
     	cls : 'touming',
@@ -9,6 +9,7 @@ Ext.define("ECAT.view.ButtomBar", {
     	height: 110,
     	bottom :0,
     	items  : [{
+    		id : 'btn_menu_bar',
     		xtype : 'button',
     		width: 90,
 	  		height: 90,
@@ -41,11 +42,11 @@ Ext.define("ECAT.view.ButtomBar", {
     	    		list_img = Ext.getCmp('list_img'),
     	    		store = Ext.getStore(list_img.getConfig('store')),
     	    		list_itemize = Ext.getCmp('list_itemize');
-    	    	topbar.setTitle('全部(150)');
     	    	list_itemize.hide();
         		store.clearFilter(true);
         		store.load();
         		list_img.refresh();
+        		topbar.toImgListAll();
     	    	Ext.Viewport.setActiveItem(pl_main); 
     	    }
     	},{
@@ -58,23 +59,10 @@ Ext.define("ECAT.view.ButtomBar", {
     	    icon : 'resources/images/icons/type_h.png',
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
-//    	    	var pl_main = Ext.getCmp('pl_main');
-//    	    	if(!pl_main){
-//    	    		Ext.create('ECAT.view.Main',{id : 'pl_main'});
-//    	    	}
-//    	    	
-//    	    	Ext.getCmp('list_itemize').hide();	
-//    	    	Ext.Viewport.setActiveItem(pl_main); 
-//    	    	setTimeout(function(){
-//    	    		Ext.getCmp('list_itemize').show({  
-//    	    			type: 'slide',  
-//    	    			direction: 'up'  
-//    	    		});
-//    	    	},500);
     	    	var topbar = Ext.getCmp('top_bar'),
     	    		pl_main = Ext.getCmp('pl_main'), 
     	    		list_itemize = Ext.getCmp('list_itemize');
-    	    	topbar.setTitle('分类选择');
+    	    	topbar.toItemizeList();
     	    	Ext.Viewport.setActiveItem(pl_main);
     	    	if(!list_itemize){
     	    		list_itemize = Ext.create('ECAT.view.Itemize',{id : 'list_itemize'});
@@ -94,7 +82,15 @@ Ext.define("ECAT.view.ButtomBar", {
     	    icon : 'resources/images/icons/fav_h.png',
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
-    	    	alert('123');
+    	    	var topbar = Ext.getCmp('top_bar'),
+    	    		list_img_fav = Ext.getCmp('list_img_fav'),
+    	    		fav_count = 0;
+    	    	if(!list_img_fav){
+    	    		list_img_fav = Ext.create('ECAT.view.Favorite',{id : 'list_img_fav'});
+    	    	}
+    	    	fav_count = list_img_fav.getConfig('store').getCount();
+    	    	topbar.toFavorite(fav_count);
+    	    	Ext.Viewport.setActiveItem(list_img_fav);
     	    }
     	},{
     		xtype : 'button',

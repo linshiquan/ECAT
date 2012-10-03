@@ -31,7 +31,7 @@ Ext.define('ECAT.view.Itemize', {
 	        	var topbar = Ext.getCmp('top_bar'),
 	        		list_img = Ext.getCmp('list_img'),
 	        		store = Ext.getStore(list_img.getConfig('store'));
-	        	topbar.setTitle(record.get('name'));
+	        	topbar.toImgListItemize(record.get('name'));
 	        	store.filter("type",record.get('id'));
 				list_img.refresh();
 //	            dv.hide({type: 'slide',direction: 'up'});
