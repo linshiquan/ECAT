@@ -4,8 +4,8 @@ Ext.define("ECAT.view.Image", {
     config: {
     	mode:true,
 		width: 768,
-		height: 1024,
-		draggable :new Ext.util.Draggable({})
+		height: 1024//,
+		//draggable :new Ext.util.Draggable({})
     },
 	beforeInitialize: function() {
         this.element.on({
