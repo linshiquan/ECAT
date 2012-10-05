@@ -26,7 +26,7 @@ Ext.define('ECAT.controller.ListController', {
     showImageByAll: function(img) {
      	var list = this.getListImgAll(),
      	    topbar = Ext.getCmp('top_bar');
-    	ECAT.lib.showImageDetail(img, list, '全部', topbar.toImgListAll);
+    	ECAT.lib.showImageDetail(img, list, list, '全部', topbar.toImgListAll);
     },
       //opens a new window to show the file
     showImageByItemize: function(img) {
@@ -37,12 +37,12 @@ Ext.define('ECAT.controller.ListController', {
      		itemizes = Ext.getCmp('list_itemize').getStore(),
      		model = itemizes.findRecord('id', type),
      		name = model.get('name');
-    	ECAT.lib.showImageDetail(img, list, name, topbar.toImgListItemize, [name]);
+    	ECAT.lib.showImageDetail(img, list.getParent(), list, name, topbar.toImgListItemize, [name]);
     },
       //opens a new window to show the file
     showImageByFav: function(img) {
     	var list = this.getListImgFav(),
     	 	topbar = Ext.getCmp('top_bar');
-    	ECAT.lib.showImageDetail(img, list, '收藏',  topbar.toFavorite);
+    	ECAT.lib.showImageDetail(img, list.getParent(), list, '收藏',  topbar.toFavorite);
     }
 });

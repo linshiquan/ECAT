@@ -144,9 +144,8 @@ Ext.define("ECAT.view.ImageDetailView", {
 		return store.getAt(index);
 	},
 	showCollect : function(){
-        var list_img_fav = Ext.getCmp('list_img_fav'),
-        	imageDetailView = Ext.getCmp('imagedetailview'),
-        	store = list_img_fav.getStore(),
+        var	imageDetailView = Ext.getCmp('imagedetailview'),
+        	store = Ext.getStore('store_fav'),
         	activeModel = imageDetailView.getActiveModel(),
         	index = store.find('name', activeModel.get('name')),
         	btn_collect = Ext.getCmp('btn_collect');

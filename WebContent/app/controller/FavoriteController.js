@@ -28,9 +28,9 @@ Ext.define('ECAT.controller.FavoriteController', {
     	
     },
     showImg : function(img){
-    	var list = this.getFav(),
+    	var list = this.getFavlist(),
     	 	topbar = Ext.getCmp('top_bar');
-    	ECAT.lib.showImageDetail(img, list, '收藏',  topbar.toFavorite);
+    	ECAT.lib.showImageDetail(img, list.getParent(), list, '收藏',  topbar.toFavorite);
     },
     delFav : function(img){
     	var record = img.config.record,
