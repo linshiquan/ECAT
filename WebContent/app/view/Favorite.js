@@ -1,6 +1,6 @@
 Ext.define("ECAT.view.Favorite", {
     extend: 'Ext.Container',
-    requires: ['Ext.Img','Ext.data.Store','ECAT.model.Img'],
+    requires: ['Ext.Img','Ext.data.Store','Ext.data.proxy.LocalStorage','ECAT.model.Img'], 
     config: {
     	width: 768,
     	height: 1024,
@@ -20,6 +20,8 @@ Ext.define("ECAT.view.Favorite", {
 	        type: 'vbox'
     	}
     },
+    isEdit : false,
+    del_imgs : [],
     initialize: function() {
         	this.callParent(arguments);
 			var store = this.getConfig('store');
@@ -33,7 +35,7 @@ Ext.define("ECAT.view.Favorite", {
 			img_name = records[i].get('name');
 			if(i % 3 == 0){
 				hc = Ext.create('Ext.Container',{
-					layout: 'hbox',
+					layout: 'hbox'
 				});
 				this.add(hc);
 			}
@@ -49,6 +51,7 @@ Ext.define("ECAT.view.Favorite", {
     refresh : function(){
     	this.removeAll(true,true); 
     	var store = this.getConfig('store');
+        this.del_imgs = [];
 		this.renderImgList(store.getRange());
     }
 });

@@ -1,5 +1,5 @@
 Ext.define("ECAT.view.ButtomBar", {
-    extend: 'Ext.Panel',
+    extend: 'Ext.Container',
     requires: ['Ext.Button','ECAT.view.Itemize','ECAT.view.Favorite'], //'ECAT.view.Main',
     config : { 
     	id : 'buttom_bar',
@@ -83,13 +83,12 @@ Ext.define("ECAT.view.ButtomBar", {
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
     	    	var topbar = Ext.getCmp('top_bar'),
-    	    		list_img_fav = Ext.getCmp('list_img_fav'),
-    	    		fav_count = 0;
+    	    		list_img_fav = Ext.getCmp('list_img_fav');
     	    	if(!list_img_fav){
     	    		list_img_fav = Ext.create('ECAT.view.Favorite',{id : 'list_img_fav'});
     	    	}
-    	    	fav_count = list_img_fav.getConfig('store').getCount();
-    	    	topbar.toFavorite(fav_count);
+    	    	list_img_fav.isEdit = false;
+    	    	topbar.toFavorite();
     	    	Ext.Viewport.setActiveItem(list_img_fav);
     	    }
     	},{

@@ -89,7 +89,7 @@ Ext.define("ECAT.view.ImageDetailView", {
 	    var active = c.getActiveIndex(),
 	        direction = (c.getItems().indexOf(v) > c.getItems().indexOf(ov)) ? 'forward' : 'backward',
 	        container = (direction=='forward') ? c.getAt(active-me.interval-1) : c.getAt(active+me.interval+1),
-	        store = this.store,
+	        store = this.config.store,
 			index = this.getComponent(active).index;
 	    
 	    c.remove(container, false);

@@ -1,16 +1,16 @@
-Ext.create('Ext.data.Store', {
-    id: 'itemizes',
-    fields: ['id','name'],
-    proxy: {
-        type: 'ajax',
-        url : 'data.json',
-        reader: {
-            type: 'json',
-            rootProperty: 'itemizes'
-        }
-    },
-    autoLoad: true
-});
+//Ext.create('Ext.data.Store', {
+//    id: 'itemizes',
+//    fields: ['id','name'],
+//    proxy: {
+//        type: 'ajax',
+//        url : 'data.json',
+//        reader: {
+//            type: 'json',
+//            rootProperty: 'itemizes'
+//        }
+//    },
+//    autoLoad: true
+//});
 
 Ext.define('ECAT.view.Itemize', {
     extend: 'Ext.dataview.List',
@@ -21,11 +21,24 @@ Ext.define('ECAT.view.Itemize', {
     	modal : true,
     	top : 90,
 	    width: 768,
-    	height: 824,
+    	height: 814,
     	scrollable : false,
     	cls : 'touming',
-    	store : 'itemizes',
-    	itemTpl : '<span>{name}<span>',
+    	store : Ext.create('Ext.data.Store', {
+    	    id: 'itemizes',
+    	    fields: ['id','name'],
+    	    proxy: {
+    	        type: 'ajax',
+    	        url : 'data.json',
+    	        reader: {
+    	            type: 'json',
+    	            rootProperty: 'itemizes'
+    	        }
+    	    },
+    	    autoLoad: true
+    	}),
+//    	store : 'itemizes',
+    	itemTpl : '<div class="x-list-itemize">{name}</div>',
 	    listeners: {
 	        itemtap: function(dv,index,target,record,e,eOpts) {
 	        	var topbar = Ext.getCmp('top_bar'),
