@@ -162,7 +162,7 @@ Ext.define("ECAT.view.TopBar", {
     				}
         			store.sync();
         		}
-    		},{
+       		},{
         		id : 'btn_order',
         		xtype : 'button',
         		hidden : true,
@@ -287,8 +287,8 @@ Ext.define("ECAT.view.TopBar", {
    		
    		var btn_collect = Ext.getCmp('btn_collect');
    		btn_collect.show();
-     },
-     toContactDetailView : function(){
+   	},
+	toContactDetailView : function(){
      	this.setTitle('联系方式');
      	Ext.getCmp('btn_order').show();
      	Ext.getCmp('btn_back').hide();

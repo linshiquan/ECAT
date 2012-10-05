@@ -13,7 +13,7 @@ Ext.define("ECAT.view.ContactDetailView", {
 	            xtype: 'numberfield',
 	            name: 'phone',
 	            label: '电话：',
-	           	cls : 'odd'
+	            cls : 'odd'
 	        },
 	        {
 	            xtype: 'emailfield',

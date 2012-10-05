@@ -16,7 +16,7 @@ Ext.application({
     		getIconSrc : function(icon_name){
     			return "resources/images/icons/"+ img_name + ".png";
     		},
-		    showImageDetail: function(img, list, backText, callback, callbackArgs){
+    		showImageDetail: function(img, list, backText, callback, callbackArgs){
 		    	var record = img.config.record,
 		    		store = Ext.getStore(list.getConfig('store')),
 		    		currentIndex = store.find('name', record.get('name'));
@@ -44,9 +44,25 @@ Ext.application({
     	});
     	
         Ext.Viewport.add(Ext.create('ECAT.view.ImgListAll',{id : 'list_img_all'}));
-        Ext.Viewport.add(Ext.create('ECAT.view.TopBar'));
         Ext.Viewport.add(Ext.create('ECAT.view.Menu'));
-        Ext.Viewport.add(Ext.create('ECAT.view.ButtomBar'));
+//        Ext.Viewport.add(Ext.create('ECAT.view.ButtomBar'));
         Ext.create('ECAT.view.Favorite',{id : 'list_img_fav'});
+        
+        //异步加载其他组件
+        setTimeout(function(){
+        	Ext.create('Ext.data.Store',{
+	     		id : 'store_fav',
+	     		model: 'ECAT.model.Img',
+	     		proxy: {
+	     			type: 'localstorage',
+	     			id  : 'favorite',
+	     		    reader: {
+	     		        type: 'json'
+	     		    }
+	     		},
+	     		autoLoad: true
+	     	});
+        
+        },2);
     }
 });

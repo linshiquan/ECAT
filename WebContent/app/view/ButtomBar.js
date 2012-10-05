@@ -117,11 +117,12 @@ Ext.define("ECAT.view.ButtomBar", {
 				}
 				Ext.Viewport.setActiveItem(contactDetailView);
 				/*Ext.Viewport.animateActiveItem(
-					contactDetailView,
-					{  
-			   			type: 'slide',  
-						direction: 'left'  
-					}
+ 					contactDetailView,
+ 					{  
+ 			   			type: 'slide',  
+ 						direction: 'left'  
+ 					}
+				);
 				);*/
 				contactDetailView.setTop('90px');
     	    }

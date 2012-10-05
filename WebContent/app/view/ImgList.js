@@ -11,12 +11,17 @@ Ext.define("ECAT.view.ImgList", {
     	}
     },
     initialize: function() {
-    		if(this.config.store == null){
+        	this.callParent(arguments);
+        	var store = this.config.store;
+    		if(store == null){
     			throw 'store is null!';
     		}
-        	this.store = this.config.store;
+    		if(Ext.isString(store)){
+				this.store = Ext.getStore(store);    			
+    		}else{
+	        	this.store = this.config.store;
+    		}
 			this.renderList();
-        	this.callParent(arguments);
 			
     },
     renderList : function(){

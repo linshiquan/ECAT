@@ -14,7 +14,7 @@ Ext.define('ECAT.view.Itemize', {
     		xtype : 'list_itemize',
     		id : 'list_itemize',
     		hidden : true,
-    	}],
+    	}]
     }
 });
 
