@@ -291,7 +291,11 @@ Ext.define("ECAT.view.TopBar", {
      toContactDetailView : function(){
      	this.setTitle('联系方式');
      	Ext.getCmp('btn_order').show();
-     	var btn_back = Ext.getCmp('btn_back');
-     	btn_back.hide();
+     	Ext.getCmp('btn_back').hide();
+     	Ext.getCmp('btn_back').hide();
+    	Ext.getCmp('btn_edit').hide();
+    	Ext.getCmp('btn_del').hide();
+    	Ext.getCmp('btn_finish').hide();
+    	Ext.getCmp('btn_collect').hide();
      }
 });
