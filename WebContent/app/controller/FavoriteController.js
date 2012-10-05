@@ -20,7 +20,7 @@ Ext.define('ECAT.controller.FavoriteController', {
         }
     },
     doImgTap : function(img, e, eOpts){
-    	if(this.getFav().isEdit){ //收藏夹编辑,点击删除图片
+    	if(this.getFavlist().isEdit){ //收藏夹编辑,点击删除图片
     		this.delFav(img);
     	}else{ //收藏夹,点击查看详情
     		this.showImg(img);
