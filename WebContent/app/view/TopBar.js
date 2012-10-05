@@ -137,7 +137,7 @@ Ext.define("ECAT.view.TopBar", {
 	    			top_bar.toFavEdit();
         		}
         	},{
-        		id : 'btn_collect',
+        	    id : 'btn_collect',
         		xtype : 'button',
         		iconCls:'star',
         		iconMask: true,
@@ -145,10 +145,22 @@ Ext.define("ECAT.view.TopBar", {
         		top : '30%',
         		right : '5%',
         		handler : function(){
-        			var list_img_fav = Ext.getCmp('list_img_fav');
-    					top_bar = Ext.getCmp('top_bar');
-    				list_img_fav.isEdit = false;
-        			top_bar.toFavorite();
+        			var list_img_fav = Ext.getCmp('list_img_fav'),
+        				imageDetailView = Ext.getCmp('imagedetailview'),
+        				store = list_img_fav.getStore(),
+        				activeModel = imageDetailView.getActiveModel(),
+        				className = this.className;
+    				// 已经被收藏
+    				if(className.search('collectactive') != -1){
+    					var index = store.find('name', activeModel.get('name'));
+    					store.removeAt(index);
+    					this.removeCls('collectactive');
+    				} else{
+    					// 还未被收藏
+    					store.add(activeModel.copy());
+    					this.addCls('collectactive');
+    				}
+        			store.sync();
         		}
     		}]
 		}]
@@ -236,7 +248,7 @@ Ext.define("ECAT.view.TopBar", {
     	btn_del.setText(text);
     },
     toImageDetailView : function(title, backText, backList, callback, callbackArgs){
-    	this.setTitle(title);
+       	this.setTitle(title);
     	var btn_back = Ext.getCmp('btn_back');
    		btn_back.setText(backText);
     	btn_back.setHandler(function(){
@@ -256,6 +268,17 @@ Ext.define("ECAT.view.TopBar", {
   		Ext.getCmp('btn_edit').hide();
  		Ext.getCmp('btn_del').hide();
    		Ext.getCmp('btn_finish').hide();
-   		Ext.getCmp('btn_collect').show();
+   		
+   		var btn_collect = Ext.getCmp('btn_collect'),
+   			list_img_fav = Ext.getCmp('list_img_fav'),
+        	imageDetailView = Ext.getCmp('imagedetailview'),
+        	store = list_img_fav.getStore(),
+        	activeModel = imageDetailView.getActiveModel(),
+        	index = store.find('name', activeModel.get('name'));
+    	// 已经被收藏
+		if(index != -1){
+			btn_collect.addCls('collectactive');
+		}
+   		btn_collect.show();
      }
 });

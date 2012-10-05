@@ -137,7 +137,7 @@ Ext.define("ECAT.view.ImageDetailView", {
 		container.index = last;
 	},
 	getActiveModel : function(){
-	    var active = c.getActiveIndex(),
+	    var active = this.getActiveIndex(),
 		store = this.store, 
 		index = this.getComponent(active).index;
 		return store.getAt(index);

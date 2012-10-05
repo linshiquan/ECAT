@@ -22,5 +22,6 @@ Ext.application({
         Ext.Viewport.add(Ext.create('ECAT.view.TopBar'));
         Ext.Viewport.add(Ext.create('ECAT.view.Menu'));
         Ext.Viewport.add(Ext.create('ECAT.view.ButtomBar'));
+        Ext.create('ECAT.view.Favorite',{id : 'list_img_fav'});
     }
 });
