@@ -21,10 +21,12 @@ Ext.define("ECAT.view.ButtomBar", {
     	    handler : function(){
     	    	 var btn_menu = Ext.getCmp('btn_menu'),
 	 	    		buttom_bar = Ext.getCmp('buttom_bar'),
-	 	    		top_bar = Ext.getCmp('top_bar');
-    	    	btn_menu.show();
-	 	    	buttom_bar.hide();
-	 	    	top_bar.hide();
+	 	    		top_bar = Ext.getCmp('top_bar'),
+	 	    		list_img_fav = Ext.getCmp('list_img_fav');
+    	    	 list_img_fav.setTop(0);
+    	    	 btn_menu.show();
+	 	    	 buttom_bar.hide();
+	 	    	 top_bar.hide();
     	    }
     	},{
     		xtype : 'button',
@@ -88,15 +90,18 @@ Ext.define("ECAT.view.ButtomBar", {
     	    handler : function(){
     	    	if(Ext.Viewport.getActiveItem().id !== 'list_img_fav'){
     	    		var topbar = Ext.getCmp('top_bar'),
-    	    			list_img_fav = Ext.getCmp('list_img_fav'),
-    	    			btn_menu_bar = Ext.getCmp('btn_menu_bar');
+    	    			favorite = Ext.getCmp('favorite'),
+    	    			btn_menu_bar = Ext.getCmp('btn_menu_bar'),
+    	    			list_img_fav;
         	    	btn_menu_bar.enable();
-    	    		if(!list_img_fav){
-    	    			list_img_fav = Ext.create('ECAT.view.Favorite',{id : 'list_img_fav'});
+    	    		if(!favorite){
+    	    			favorite = Ext.create('ECAT.view.Favorite',{id : 'favorite'});
     	    		}
+    	    		list_img_fav = Ext.getCmp('list_img_fav');
     	    		list_img_fav.isEdit = false;
+    	    		list_img_fav.setTop(90);
     	    		topbar.toFavorite();
-    	    		Ext.Viewport.setActiveItem(list_img_fav);
+    	    		Ext.Viewport.setActiveItem(favorite);
     	    	}
     	    }
     	},{

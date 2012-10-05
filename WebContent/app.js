@@ -46,7 +46,7 @@ Ext.application({
         Ext.Viewport.add(Ext.create('ECAT.view.ImgListAll',{id : 'list_img_all'}));
         Ext.Viewport.add(Ext.create('ECAT.view.Menu'));
 //        Ext.Viewport.add(Ext.create('ECAT.view.ButtomBar'));
-        Ext.create('ECAT.view.Favorite',{id : 'list_img_fav'});
+//        Ext.create('ECAT.view.Favorite',{id : 'list_img_fav'});
         
         //异步加载其他组件
         setTimeout(function(){

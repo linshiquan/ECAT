@@ -3,7 +3,8 @@ Ext.define('ECAT.controller.FavoriteController', {
 
     config: {
     	refs:{
-    		fav : '#list_img_fav',
+    		favlist : '#list_img_fav',
+    		fav : '#favorite',
     		topb : '#top_bar',
     		listController : {
     			xtype : 'listcontroller',
@@ -34,7 +35,7 @@ Ext.define('ECAT.controller.FavoriteController', {
     delFav : function(img){
     	var record = img.config.record,
     		img_name = record.get('name'),
-    		del_imgs = this.getFav().del_imgs,
+    		del_imgs = this.getFavlist().del_imgs,
     		img_index = del_imgs.indexOf(img_name);
     		
     	if(img_index == -1){
