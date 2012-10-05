@@ -2,8 +2,8 @@ Ext.define("ECAT.view.Menu", {
     extend: 'Ext.Button',
     config : {
     	id : 'btn_menu',
-		width: 90,
-	    height: 90,
+		width: 70,
+	    height: 60,
 	    left: '5%',
 	    bottom : 0,
 	    ui : 'plain',

@@ -6,13 +6,13 @@ Ext.define("ECAT.view.ButtomBar", {
     	cls : 'touming',
     	hidden : true,
     	width: "100%",
-    	height: 110,
+    	height: 90,
     	bottom :0,
     	items  : [{
     		id : 'btn_menu_bar',
     		xtype : 'button',
-    		width: 90,
-	  		height: 90,
+    		width: 70,
+	  		height: 60,
     	    left: '5%',
     	    top : 10,
     	    ui : 'plain',
@@ -31,8 +31,8 @@ Ext.define("ECAT.view.ButtomBar", {
     	},{
     		xtype : 'button',
     		id : 'btn_all',
-    		width: 90,
-	  		height: 90,
+    		width: 60,
+	  		height: 60,
     	    left: '25%',
     	    top : 10,
     	    ui : 'plain',
@@ -50,8 +50,8 @@ Ext.define("ECAT.view.ButtomBar", {
     	    }
     	},{
     		xtype : 'button',
-    		width: 90,
-	  		height: 90,
+    		width: 60,
+	  		height: 60,
     	    left: '45%',
     	    top : 10,
     	    ui : 'plain',
@@ -80,8 +80,8 @@ Ext.define("ECAT.view.ButtomBar", {
 	    	}
     	},{
     		xtype : 'button',
-    		width: 90,
-	  		height: 90,
+    		width: 60,
+	  		height: 60,
     	    left: '65%',
     	    top : 10,
     	    ui : 'plain',
@@ -106,8 +106,8 @@ Ext.define("ECAT.view.ButtomBar", {
     	    }
     	},{
     		xtype : 'button',
-    		width: 90,
-	  		height: 90,
+    		width: 60,
+	  		height: 60,
     	    left: '85%',
     	    top : 10,
     	    ui : 'plain',
@@ -115,7 +115,9 @@ Ext.define("ECAT.view.ButtomBar", {
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
 				var topbar = Ext.getCmp('top_bar'),
-					contactDetailView = Ext.getCmp('contactDetailView');
+					contactDetailView = Ext.getCmp('contactDetailView'),
+					btn_menu_bar = Ext.getCmp('btn_menu_bar');
+				btn_menu_bar.disable();
 				topbar.toContactDetailView();
 				if(!contactDetailView){
 					contactDetailView = Ext.create("ECAT.view.ContactDetailView");
@@ -129,7 +131,7 @@ Ext.define("ECAT.view.ButtomBar", {
  					}
 				);
 				);*/
-				contactDetailView.setTop('90px');
+//				contactDetailView.setTop('90px');
     	    }
     	}]
     }
