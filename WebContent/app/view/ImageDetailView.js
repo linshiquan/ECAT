@@ -106,6 +106,7 @@ Ext.define("ECAT.view.ImageDetailView", {
   setToolbarTitle : function(index, store){
   		var topbar = Ext.getCmp('top_bar');
     	topbar.setTitle((index + 1) + '/' + store.getCount());
+   		this.showCollect();
   },
   setCurrentImageSrc : function(store, currentIndex){
   	 	//var store = this.config.store,
@@ -141,5 +142,20 @@ Ext.define("ECAT.view.ImageDetailView", {
 		store = this.store, 
 		index = this.getComponent(active).index;
 		return store.getAt(index);
+	},
+	showCollect : function(){
+        var list_img_fav = Ext.getCmp('list_img_fav'),
+        	imageDetailView = Ext.getCmp('imagedetailview'),
+        	store = list_img_fav.getStore(),
+        	activeModel = imageDetailView.getActiveModel(),
+        	index = store.find('name', activeModel.get('name')),
+        	btn_collect = Ext.getCmp('btn_collect');
+    	// 已经被收藏
+		if(index != -1){
+			btn_collect.addCls('collectactive');
+		} else{
+			// 还未被收藏
+			btn_collect.removeCls('collectactive');
+		}
 	}
 });

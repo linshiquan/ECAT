@@ -149,7 +149,7 @@ Ext.define("ECAT.view.TopBar", {
         				imageDetailView = Ext.getCmp('imagedetailview'),
         				store = list_img_fav.getStore(),
         				activeModel = imageDetailView.getActiveModel(),
-        				className = this.className;
+        				className = this.element.dom.className;
     				// 已经被收藏
     				if(className.search('collectactive') != -1){
     					var index = store.find('name', activeModel.get('name'));
@@ -269,16 +269,7 @@ Ext.define("ECAT.view.TopBar", {
  		Ext.getCmp('btn_del').hide();
    		Ext.getCmp('btn_finish').hide();
    		
-   		var btn_collect = Ext.getCmp('btn_collect'),
-   			list_img_fav = Ext.getCmp('list_img_fav'),
-        	imageDetailView = Ext.getCmp('imagedetailview'),
-        	store = list_img_fav.getStore(),
-        	activeModel = imageDetailView.getActiveModel(),
-        	index = store.find('name', activeModel.get('name'));
-    	// 已经被收藏
-		if(index != -1){
-			btn_collect.addCls('collectactive');
-		}
+   		var btn_collect = Ext.getCmp('btn_collect');
    		btn_collect.show();
      }
 });

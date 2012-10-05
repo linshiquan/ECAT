@@ -69,6 +69,5 @@ Ext.define('ECAT.controller.ListController', {
     	var list = this.getListImgFav(),
     	 	topbar = Ext.getCmp('top_bar');
     	this.showImage(img, list, '收藏',  topbar.toFavorite);
-
     }
 });
