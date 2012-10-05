@@ -34,8 +34,8 @@ Ext.define('ECAT.view.ItemizeList', {
 	        	store.clearFilter(true);
 	        	store.filter("type",record.get('id'));
 				list_img_itemize.refreshList();
-	            dv.hide();
-//	            dv.hide({type: 'slide',direction: 'up'});
+//	            dv.hide();
+	            dv.hide({type: 'slide',direction: 'right',out: true,duration : 500});
 	        },
 	        show : function(list, eOpts){
 	        	var list_img_itemize = Ext.getCmp('list_img_itemize');

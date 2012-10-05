@@ -202,7 +202,7 @@ Ext.define("ECAT.view.TopBar", {
 				btn_menu_bar = Ext.getCmp('btn_menu_bar');
 	    	btn_menu_bar.disable();
 			top_bar.toItemizeList();
-			list_itemize.show({type: 'slide',direction: 'left'});
+			list_itemize.show({type: 'slide',direction: 'left',out: false,duration : 400});
     	});
     	btn_back.show();
     	Ext.getCmp('btn_edit').hide();

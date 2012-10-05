@@ -83,7 +83,7 @@ Ext.define("ECAT.view.ButtomBar", {
 	    	    			type: 'slide',  
 	    	    			direction: 'up'  
 	    	    		});
-	    	    	},500);
+	    	    	},20);
     	    	}
 	    	}
     	},{
