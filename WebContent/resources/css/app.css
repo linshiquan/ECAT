@@ -7,7 +7,7 @@ background-color: white;
 }
 
 .x-container.jiantou {
-	background-image: url('/ecat/resources/images/icons/jiantou.png');
+	background-image: url('../images/icons/jiantou.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	-webkit-background-size: 70px 10px; 
@@ -15,7 +15,7 @@ background-color: white;
 
 
 .x-container.topstrip {
-	background-image: url('/ecat/resources/images/icons/topstrip.png');
+	background-image: url('../images/icons/topstrip.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-color: #03111A;
@@ -35,7 +35,7 @@ color:white;
 
 
 .x-container.toolbar {
-	background-image: url('/ecat/resources/images/icons/toolbar.png');
+	background-image: url('../images/icons/toolbar.png');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-color: #03111A;
