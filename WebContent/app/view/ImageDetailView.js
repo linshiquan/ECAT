@@ -50,15 +50,13 @@ Ext.define("ECAT.view.ImageDetailView", {
     config: {
     	id:'imagedetailview',
     	indicator:false,
+    	currentIndex : '',
     	items : [{
-    		xtype:'ecatimage',
-    		id : 'imagedetail1'
+    		xtype:'ecatimage'
     	},{
-    		xtype:'ecatimage',
-    		id : 'imagedetail'
+    		xtype:'ecatimage'
     	},{
-    		xtype:'ecatimage',
-    		id : 'imagedetail2'
+    		xtype:'ecatimage'
     	}],
     	fullscreen : true
     },
@@ -89,8 +87,11 @@ Ext.define("ECAT.view.ImageDetailView", {
 	    var active = c.getActiveIndex(),
 	        direction = (c.getItems().indexOf(v) > c.getItems().indexOf(ov)) ? 'forward' : 'backward',
 	        container = (direction=='forward') ? c.getAt(active-me.interval-1) : c.getAt(active+me.interval+1),
-			store = this.config.store, 
+			store = this.store, 
 			index = this.getComponent(active).index;
+			
+		// 设置标题栏
+    	this.setToolbarTitle(index, store);
 	
 	    c.remove(container, false);
 
@@ -102,24 +103,37 @@ Ext.define("ECAT.view.ImageDetailView", {
 			c.insert(0, container);
 		}
   },
+  setToolbarTitle : function(index, store){
+  		var topbar = Ext.getCmp('top_bar');
+    	topbar.setTitle((index + 1) + '/' + store.getCount());
+  },
+  setCurrentImageSrc : function(store, currentIndex){
+  	 	//var store = this.config.store,
+	    //	currentIndex = this.config.currentIndex;
+	    var	record = store.getAt(currentIndex),
+	    	container = this.getAt(this.interval);
+	    this.store = store;	
+	   	container.setSrc(ECAT.lib.getDaImgSrc(record.get('name')));
+    	container.index = currentIndex;
+    	this.setImageSrcForForward(this.getAt(this.interval+1), store, currentIndex);
+    	this.setImageSrcForBackward(this.getAt(this.interval-1), store, currentIndex);
+  },
   setImageSrcForForward : function(container, store, index) {
-		var next = index + 2;
+		var next = index + 1;
 		if (next >= store.getCount()) {
 			next = next - store.getCount();
 		}
 		var nextModel = store.getAt(next);
-		container.setSrc("resources/images/da/" + nextModel.get('name')
-				+ ".png");
+		container.setSrc(ECAT.lib.getDaImgSrc(nextModel.get('name')));
 		container.index = next;
 	},
 	setImageSrcForBackward : function(container, store, index) {
-		var last = index - 2;
+		var last = index - 1;
 		if (last < 0) {
 			last = store.getCount() + last;
 		}
 		var lastModel = store.getAt(last);
-		container.setSrc("resources/images/da/" + lastModel.get('name')
-				+ ".png");
+		container.setSrc(ECAT.lib.getDaImgSrc(lastModel.get('name')));
 		container.index = last;
 	}
 });

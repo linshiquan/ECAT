@@ -3,54 +3,72 @@ Ext.define('ECAT.controller.ListController', {
 
     config: {
     	refs:{
-    		imagelist : '#list_img',
+    		listImgAll : '#list_img_all',
+    		listImgItemize : '#list_img_itemize',
+    		listImgFav : '#list_img_fav',
     		mainPlan : '#pl_main'
     	},
     	control: {
-            '#list_img img': {
-                tap: 'showImage'
+            '#list_img_all img': {
+                tap: 'showImageByAll'
+            },
+            '#list_img_itemize img': {
+                tap: 'showImageByItemize'
+            },
+            '#list_img_fav img': {
+                tap: 'showImageByFav'
             }
         },
         routes: {
         }
     },
-
-    //opens a new window to show the file
-     showImage: function(img) {
-     	var filename = img.config.fileName,
-    		store = Ext.getStore(this.getImagelist().getConfig('store')),
-    		index = store.find('name', filename);
-    	console.log(filename);
-    	
+    showImage: function(img, list, backText, callback, callbackArgs){
+    	var record = img.config.record,
+    		store = Ext.getStore(list.getConfig('store')),
+    		currentIndex = store.find('name', record.get('name'));
+    		
     	var imageDetailView = Ext.getCmp('imagedetailview');
     	if(!imageDetailView){
-    		imageDetailView = Ext.create('ECAT.view.ImageDetailView',{store : store});
+    		imageDetailView = Ext.create('ECAT.view.ImageDetailView',{});
     	}
+    	imageDetailView.setCurrentImageSrc(store, currentIndex);
     	
-    	filename = "resources/images/da/"+ filename + ".png";
-    	imageDetailView.getComponent('imagedetail').setSrc(filename);
-    	imageDetailView.getComponent('imagedetail').index = index;
-    	var last = index - 1;
-    	if(last < 0){
-    		last = store.getCount() - 1;
-    	}
-    	var lastModel = store.getAt(last);
-    	imageDetailView.getComponent('imagedetail1').setSrc("resources/images/da/"+ lastModel.get('name') + ".png");
-    	imageDetailView.getComponent('imagedetail1').index = last;
-    	var next = index + 1;
-    	if(next == store.getCount()){
-    		next = 0;
-    	}
-    	var nextModel = store.getAt(next);
-    	imageDetailView.getComponent('imagedetail2').setSrc("resources/images/da/"+ nextModel.get('name') + ".png");
-    	imageDetailView.getComponent('imagedetail2').index = next;
-    	//imageDetailView.setActiveItem(imageDetailView.getComponent('imagedetail'));
-       	this.getMainPlan().animateActiveItem(
+    	// 这是标题栏
+    	var topbar = Ext.getCmp('top_bar'),
+    		title = (currentIndex + 1) + '/' + store.getCount();
+		topbar.toImageDetailView(title, backText, list, callback, callbackArgs);
+
+    	Ext.Viewport.animateActiveItem(
 	        imageDetailView,  
 			{  
 			    type: 'slide',  
 			    direction: 'left'  
 			}
 	    ); 
+    	
+    },
+    //opens a new window to show the file
+    showImageByAll: function(img) {
+     	var list = this.getListImgAll(),
+     	    topbar = Ext.getCmp('top_bar');
+    	this.showImage(img, list, '全部', topbar.toImgListAll);
+    },
+      //opens a new window to show the file
+    showImageByItemize: function(img) {
+     	var list = this.getListImgItemize(),
+     		topbar = Ext.getCmp('top_bar'),
+     		record = img.config.record,
+     		type = record.get('type'),
+     		itemizes = Ext.getCmp('list_itemize').getStore(),
+     		model = itemizes.findRecord('id', type),
+     		name = model.get('name');
+    	this.showImage(img, list, name, topbar.toImgListItemize, [name]);
+    },
+      //opens a new window to show the file
+    showImageByFav: function(img) {
+    	var list = this.getListImgFav(),
+    	 	topbar = Ext.getCmp('top_bar');
+    	this.showImage(img, list, '收藏',  topbar.toFavorite);
+
     }
 });

@@ -133,15 +133,32 @@ Ext.define("ECAT.view.TopBar", {
         			list_img_fav.isEdit = true;
         			top_bar.toFavEdit();
         		}
-        	}]
-    	}]
-    },
+        	},{
+        		id : 'btn_collect',
+        		xtype : 'button',
+        		iconCls:'star',
+        		iconMask: true,
+        		hidden : true,
+        		top : '30%',
+        		right : '5%',
+        		handler : function(){
+        			var list_img_fav = Ext.getCmp('list_img_fav');
+    					top_bar = Ext.getCmp('top_bar');
+    				list_img_fav.isEdit = false;
+        			top_bar.toFavorite();
+        		}
+    		}]
+		}]
+	},
     initialize: function() {
     	this.callParent(arguments);
     	this.toImgListAll();
     },
     setTitle : function(title){
     	Ext.getCmp('title_tb').updateTitle(title);
+    },
+    getTitle : function(){
+    	return Ext.getCmp('title_tb')._html;
     },
     toImgListItemize : function(title){
     	var btn_back = Ext.getCmp('btn_back');
@@ -157,6 +174,7 @@ Ext.define("ECAT.view.TopBar", {
     	Ext.getCmp('btn_edit').hide();
     	Ext.getCmp('btn_del').hide();
     	Ext.getCmp('btn_finish').hide();
+    	Ext.getCmp('btn_collect').hide();
     },
     toItemizeList : function(){
     	this.setTitle('分类选择');
@@ -164,6 +182,7 @@ Ext.define("ECAT.view.TopBar", {
     	Ext.getCmp('btn_edit').hide();
     	Ext.getCmp('btn_del').hide();
     	Ext.getCmp('btn_finish').hide();
+    	Ext.getCmp('btn_collect').hide();
     },
     toImgListAll : function(){
     	if(!this.title_list_img_all){
@@ -175,6 +194,7 @@ Ext.define("ECAT.view.TopBar", {
     	Ext.getCmp('btn_edit').hide();
     	Ext.getCmp('btn_del').hide();
     	Ext.getCmp('btn_finish').hide();
+    	Ext.getCmp('btn_collect').hide();
     },
     toFavorite : function(){
     	var title = '收藏夹',
@@ -187,6 +207,7 @@ Ext.define("ECAT.view.TopBar", {
     	Ext.getCmp('btn_edit').show();
     	Ext.getCmp('btn_del').hide();
     	Ext.getCmp('btn_finish').hide();
+    	Ext.getCmp('btn_collect').hide();
     },
     toFavEdit : function(){
     	var title = '收藏夹编辑';
@@ -196,6 +217,7 @@ Ext.define("ECAT.view.TopBar", {
     	Ext.getCmp('btn_del').show();
     	this.setBtnDel();
     	Ext.getCmp('btn_finish').show();
+    	Ext.getCmp('btn_collect').hide();
     },
     setBtnDel : function(count){
     	var btn_del = Ext.getCmp('btn_del'),
@@ -207,5 +229,28 @@ Ext.define("ECAT.view.TopBar", {
     		btn_del.setDisabled(true);
     	}
     	btn_del.setText(text);
-    }
+    },
+    toImageDetailView : function(title, backText, backList, callback, callbackArgs){
+    	this.setTitle(title);
+    	var btn_back = Ext.getCmp('btn_back');
+   		btn_back.setText(backText);
+    	btn_back.setHandler(function(){
+	   		//var backListCmp = Ext.getCmp(backListId);
+	   		//top_bar = Ext.getCmp('top_bar');
+	  		//top_bar.toItemizeList();
+	 		Ext.Viewport.animateActiveItem(
+		        backList,  
+				{  
+				    type: 'slide',  
+				    direction: 'left'  
+				}
+	    	);
+	    	Ext.defer(callback, 1, Ext.getCmp('top_bar'), callbackArgs);
+		});
+  		btn_back.show();
+  		Ext.getCmp('btn_edit').hide();
+ 		Ext.getCmp('btn_del').hide();
+   		Ext.getCmp('btn_finish').hide();
+   		Ext.getCmp('btn_collect').show();
+     }
 });
