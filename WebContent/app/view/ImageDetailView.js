@@ -8,10 +8,11 @@ Ext.define("ECAT.view.Image", {
 		//draggable :new Ext.util.Draggable({})
     },
 	beforeInitialize: function() {
-        this.element.on({
+		this.callParent(arguments);
+       /* this.element.on({
             pinch: 'onPinch',
             scope: this
-        });
+        });*/
     },
   	onPinch : function(e) {
 		var me = this, 
@@ -61,6 +62,7 @@ Ext.define("ECAT.view.ImageDetailView", {
     	fullscreen : true
     },
     initialize: function(){
+    	this.callParent(arguments);
 	    var me = this;
 	    me.callParent();
 	    

@@ -63,6 +63,7 @@ Ext.define("ECAT.view.ContactDetailView", {
     	fullscreen : true
     },
     initialize: function() {
+    	this.callParent(arguments);
     	this.setValues({
 		    phone: '7758258',
 		    email: 'ed@sencha.com',
