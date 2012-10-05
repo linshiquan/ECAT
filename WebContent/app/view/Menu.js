@@ -25,7 +25,9 @@ Ext.define("ECAT.view.Menu", {
 	    	
 	    	if(Ext.Viewport.getActiveItem().id === 'favorite'){
 	    		Ext.getCmp('list_img_fav').setTop(90);
-	    	}
+	    	} else if(Ext.Viewport.getActiveItem().id === 'contactDetailView'){
+	 	    	Ext.getCmp('contactDetailView').element.dom.style.top = '90px';
+	 	   	}
 	    }
     }
 });

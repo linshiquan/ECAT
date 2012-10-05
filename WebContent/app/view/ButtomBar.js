@@ -27,6 +27,8 @@ Ext.define("ECAT.view.ButtomBar", {
 	 	    	 top_bar.hide();
 	 	    	 if(Ext.Viewport.getActiveItem().id === 'favorite'){
 	 	    		 Ext.getCmp('list_img_fav').setTop(0);
+	 	    	 } else if(Ext.Viewport.getActiveItem().id === 'contactDetailView'){
+	 	    	 	Ext.getCmp('contactDetailView').element.dom.style.top = '0px';
 	 	    	 }
     	    }
     	},{
@@ -129,7 +131,7 @@ Ext.define("ECAT.view.ButtomBar", {
 					contactDetailView = Ext.getCmp('contactDetailView'),
 					btn_menu_bar = Ext.getCmp('btn_menu_bar');
 				buttom_bar.setBtn('btn_link');
-				btn_menu_bar.disable();
+				btn_menu_bar.enable();
 				topbar.toContactDetailView();
 				if(!contactDetailView){
 					contactDetailView = Ext.create("ECAT.view.ContactDetailView");
@@ -143,7 +145,7 @@ Ext.define("ECAT.view.ButtomBar", {
  					}
 				);
 				);*/
-//				contactDetailView.setTop('90px');
+				contactDetailView.element.dom.style.top = '90px';
     	    }
     	},{
     		xtype : 'container',
@@ -152,7 +154,7 @@ Ext.define("ECAT.view.ButtomBar", {
     		left : '25%',
     		bottom : 0,
 	    	width: 70,
-	  		height: 10,
+	  		height: 10
     	}]
     },
     setBtn : function(btnId){

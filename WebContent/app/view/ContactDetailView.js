@@ -54,6 +54,10 @@ Ext.define("ECAT.view.ContactDetailView", {
 	        {
 	            xtype: 'textfield',
 	            cls : 'even'
+	        },
+	        {
+	            xtype: 'textfield',
+	            cls : 'odd'
 	        }
     	],
     	fullscreen : true
