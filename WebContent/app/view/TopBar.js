@@ -1,7 +1,6 @@
 Ext.define("ECAT.view.TopBar", {
     extend: 'Ext.Container',
     requires: ['Ext.Spacer','Ext.Title'],
-    del_imgs : [],
     config : {
     	id : 'top_bar',
     	floatingCls : 'c-x-floating',
@@ -105,9 +104,11 @@ Ext.define("ECAT.view.TopBar", {
         		text : '完成',
         		handler : function(){
         			var list_img_fav = Ext.getCmp('list_img_fav');
-    					top_bar = Ext.getCmp('top_bar');
-    				list_img_fav.isEdit = false;
-        			top_bar.toFavorite();
+						top_bar = Ext.getCmp('top_bar'),
+		    			btn_menu_bar = Ext.getCmp('btn_menu_bar');
+				    btn_menu_bar.enable();
+					list_img_fav.isEdit = false;
+	    			top_bar.toFavorite();
         		}
         	},{
         		id : 'btn_edit',
@@ -129,9 +130,11 @@ Ext.define("ECAT.view.TopBar", {
 //        			store.sync();
 //        			list_img_fav.refreshList();
         			var list_img_fav = Ext.getCmp('list_img_fav');
-        				top_bar = Ext.getCmp('top_bar');
-        			list_img_fav.isEdit = true;
-        			top_bar.toFavEdit();
+	    				top_bar = Ext.getCmp('top_bar'),
+	        			btn_menu_bar = Ext.getCmp('btn_menu_bar');
+	    		    btn_menu_bar.disable();
+	    			list_img_fav.isEdit = true;
+	    			top_bar.toFavEdit();
         		}
         	},{
         		id : 'btn_collect',
@@ -166,9 +169,11 @@ Ext.define("ECAT.view.TopBar", {
     	btn_back.setText('分类');
     	btn_back.setHandler(function(){
     		var list_itemize = Ext.getCmp('list_itemize'),
-    		top_bar = Ext.getCmp('top_bar');
-    		top_bar.toItemizeList();
-    		list_itemize.show({type: 'slide',direction: 'left'});
+				top_bar = Ext.getCmp('top_bar'),
+				btn_menu_bar = Ext.getCmp('btn_menu_bar');
+	    	btn_menu_bar.disable();
+			top_bar.toItemizeList();
+			list_itemize.show({type: 'slide',direction: 'left'});
     	});
     	btn_back.show();
     	Ext.getCmp('btn_edit').hide();
@@ -198,7 +203,7 @@ Ext.define("ECAT.view.TopBar", {
     },
     toFavorite : function(){
     	var title = '收藏夹',
-    		c = Ext.getCmp('list_img_fav').getConfig('store').getCount();
+    		c = Ext.getCmp('list_img_fav').store.getCount();
     	if(c > 0){
     		title += ('('+ c + ')');
     	}

@@ -1,6 +1,6 @@
 Ext.define('ECAT.controller.ListController', {
     extend: 'Ext.app.Controller',
-
+    requires: ['ECAT.view.ImageDetailView'],
     config: {
     	refs:{
     		listImgAll : '#list_img_all',
@@ -14,9 +14,9 @@ Ext.define('ECAT.controller.ListController', {
             },
             '#list_img_itemize img': {
                 tap: 'showImageByItemize'
-            },
-            '#list_img_fav img': {
-                tap: 'showImageByFav'
+//            },
+//            '#list_img_fav img': {
+//                tap: 'showImageByFav'
             }
         },
         routes: {

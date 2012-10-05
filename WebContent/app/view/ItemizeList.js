@@ -27,7 +27,9 @@ Ext.define('ECAT.view.ItemizeList', {
 	        itemtap: function(dv,index,target,record,e,eOpts) {
 	        	var topbar = Ext.getCmp('top_bar'),
 	        		list_img_itemize = Ext.getCmp('list_img_itemize'),
-	        		store = list_img_itemize.store;
+	        		store = list_img_itemize.store,
+	    			btn_menu_bar = Ext.getCmp('btn_menu_bar');
+	    		btn_menu_bar.enable();
 	        	topbar.toImgListItemize(record.get('name'));
 	        	store.clearFilter(true);
 	        	store.filter("type",record.get('id'));

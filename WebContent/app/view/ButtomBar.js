@@ -37,10 +37,14 @@ Ext.define("ECAT.view.ButtomBar", {
     	    icon : 'resources/images/icons/all_h.png',
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
-    	    	var topbar = Ext.getCmp('top_bar'),
-    	    		list_img_all = Ext.getCmp('list_img_all');
-        		topbar.toImgListAll();
-    	    	Ext.Viewport.setActiveItem(list_img_all); 
+    	    	if(Ext.Viewport.getActiveItem().id !== 'list_img_all'){
+    	    		var topbar = Ext.getCmp('top_bar'),
+    	    			list_img_all = Ext.getCmp('list_img_all'),
+    	    			btn_menu_bar = Ext.getCmp('btn_menu_bar');
+    	    		btn_menu_bar.enable();
+    	    		topbar.toImgListAll();
+    	    		Ext.Viewport.setActiveItem(list_img_all); 
+    	    	}
     	    }
     	},{
     		xtype : 'button',
@@ -52,21 +56,25 @@ Ext.define("ECAT.view.ButtomBar", {
     	    icon : 'resources/images/icons/type_h.png',
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
-    	    	var topbar = Ext.getCmp('top_bar'),
-    	    		itemize = Ext.getCmp('itemize');
-    	    	topbar.toItemizeList();
-    	    	if(!itemize){
-    	    		itemize = Ext.create('ECAT.view.Itemize',{id : 'itemize'});
+    	    	if(Ext.Viewport.getActiveItem().id !== 'itemize'){
+	    	    	var topbar = Ext.getCmp('top_bar'),
+	    	    		itemize = Ext.getCmp('itemize'),
+	    	    		btn_menu_bar = Ext.getCmp('btn_menu_bar');
+	    	    	if(!itemize){
+	    	    		itemize = Ext.create('ECAT.view.Itemize',{id : 'itemize'});
+	    	    	}
+	    	    	btn_menu_bar.disable();
+	    	    	topbar.toItemizeList();
+	    	    	Ext.getCmp('list_itemize').hide();
+	    	    	Ext.Viewport.setActiveItem(itemize);
+	    	    	setTimeout(function(){
+	    	    		var list_itemize = Ext.getCmp('list_itemize');
+	    	    		list_itemize.show({  
+	    	    			type: 'slide',  
+	    	    			direction: 'up'  
+	    	    		});
+	    	    	},500);
     	    	}
-    	    	Ext.getCmp('list_itemize').hide();
-    	    	Ext.Viewport.setActiveItem(itemize);
-    	    	setTimeout(function(){
-    	    		var list_itemize = Ext.getCmp('list_itemize');
-    	    		list_itemize.show({  
-    	    			type: 'slide',  
-    	    			direction: 'up'  
-    	    		});
-    	    	},500);
 	    	}
     	},{
     		xtype : 'button',
@@ -78,14 +86,18 @@ Ext.define("ECAT.view.ButtomBar", {
     	    icon : 'resources/images/icons/fav_h.png',
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
-    	    	var topbar = Ext.getCmp('top_bar'),
-    	    		list_img_fav = Ext.getCmp('list_img_fav');
-    	    	if(!list_img_fav){
-    	    		list_img_fav = Ext.create('ECAT.view.Favorite',{id : 'list_img_fav'});
+    	    	if(Ext.Viewport.getActiveItem().id !== 'list_img_fav'){
+    	    		var topbar = Ext.getCmp('top_bar'),
+    	    			list_img_fav = Ext.getCmp('list_img_fav'),
+    	    			btn_menu_bar = Ext.getCmp('btn_menu_bar');
+        	    	btn_menu_bar.enable();
+    	    		if(!list_img_fav){
+    	    			list_img_fav = Ext.create('ECAT.view.Favorite',{id : 'list_img_fav'});
+    	    		}
+    	    		list_img_fav.isEdit = false;
+    	    		topbar.toFavorite();
+    	    		Ext.Viewport.setActiveItem(list_img_fav);
     	    	}
-    	    	list_img_fav.isEdit = false;
-    	    	topbar.toFavorite();
-    	    	Ext.Viewport.setActiveItem(list_img_fav);
     	    }
     	},{
     		xtype : 'button',
@@ -105,11 +117,13 @@ Ext.define("ECAT.view.ButtomBar", {
 					}
 				);
 				var btn_menu = Ext.getCmp('btn_menu'),
-				buttom_bar = Ext.getCmp('buttom_bar'),
-				top_bar = Ext.getCmp('top_bar');
-				btn_menu.show();
-				buttom_bar.hide();
-				top_bar.hide();
+					buttom_bar = Ext.getCmp('buttom_bar'),
+					top_bar = Ext.getCmp('top_bar'),
+	    			btn_menu_bar = Ext.getCmp('btn_menu_bar');
+	    		btn_menu_bar.enable();
+	//			btn_menu.show();
+	//			buttom_bar.hide();
+	//			top_bar.hide();
     	    }
     	}]
     }
