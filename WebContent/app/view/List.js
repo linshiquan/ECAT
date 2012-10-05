@@ -24,19 +24,19 @@ Ext.define("ECAT.view.ImagePanel", {
     }
 });
 
-Ext.create('Ext.data.Store',{
-	id : 'st_img',
-	model: 'ECAT.model.Img',
-	proxy: {
-	    type: 'ajax',
-	    url : 'data.json',
-	    reader: {
-	        type: 'json',
-	        rootProperty: 'imgs'
-	    }
-	},
-	autoLoad: true
-});
+//Ext.create('Ext.data.Store',{
+//	id : 'st_img',
+//	model: 'ECAT.model.Img',
+//	proxy: {
+//	    type: 'ajax',
+//	    url : 'data.json',
+//	    reader: {
+//	        type: 'json',
+//	        rootProperty: 'imgs'
+//	    }
+//	},
+//	autoLoad: true
+//});
 
 Ext.define("ECAT.view.List", {
     extend: 'Ext.Container',
@@ -46,8 +46,20 @@ Ext.define("ECAT.view.List", {
     	width: 768,
     	height: 1024,
     	scrollable : 'vertical',
-//    	store:	Ext.create('ECAT.store.Imgs'),
-    	store : 'st_img',
+    	store:	Ext.create('Ext.data.Store',{
+    		id : 'st_img',
+    		model: 'ECAT.model.Img',
+    		proxy: {
+    		    type: 'ajax',
+    		    url : 'data.json',
+    		    reader: {
+    		        type: 'json',
+    		        rootProperty: 'imgs'
+    		    }
+    		},
+    		autoLoad: true
+    	}),
+//    	store : 'st_img',
     	columnNum:3,
     	layout: {
 	        type: 'vbox'

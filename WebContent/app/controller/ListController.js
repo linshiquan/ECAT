@@ -17,7 +17,7 @@ Ext.define('ECAT.controller.ListController', {
 
     //opens a new window to show the file
      showImage: function(img) {
-     	var filename = img.fileName,
+     	var filename = img.config.fileName,
     		store = Ext.getStore(this.getImagelist().getConfig('store')),
     		index = store.find('name', filename);
     	console.log(filename);

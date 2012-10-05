@@ -97,3 +97,26 @@ background-color: #03111A;
 	border: 1px solid black;
 	border-top-color: black;
 }
+
+.x-list-itemize {
+font-weight: bold;
+font-size: 2em;
+min-height: 2em;
+padding: 0.5em 1em;
+}
+
+.x-list-normal .x-list-item.x-item-selected .x-list-item-label {
+border-top-color: #DEDEDE;
+border-bottom-color: #DEDEDE;
+}
+
+.x-list-normal .x-list-item.x-item-selected .x-list-item-label {
+	background-image: -webkit-linear-gradient(top, white,white 3%,white);
+}
+
+.x-list .x-list-item.x-item-selected .x-list-item-label {
+color: #005C9D;
+text-shadow: rgba(0, 0, 0, 0.5) 0 -0.08em 0;
+}
+
+

@@ -1,10 +1,10 @@
 Ext.application({
     name: 'ECAT',
     
-    controllers: ['ListController'],
-    views: ['Main','Menu','TopBar','ButtomBar'],
     models: ['Img'],
     stores: ['Imgs'],
+    controllers: ['ListController','FavoriteController'],
+    views: ['Main','Menu','TopBar','ButtomBar'],
    
     launch: function() {
         Ext.Viewport.add(Ext.create('ECAT.view.Main',{id : 'pl_main'}));
