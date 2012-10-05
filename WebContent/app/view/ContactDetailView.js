@@ -3,6 +3,7 @@ Ext.define("ECAT.view.ContactDetailView", {
     xtype:'contactdetailview',
     config: {
     	id : 'contactDetailView',
+    	style : 'z-index : 5',
     	baseCls : 'contactdetailview',
     	defaults: {
 	       readOnly: true
@@ -11,17 +12,20 @@ Ext.define("ECAT.view.ContactDetailView", {
 	        {
 	            xtype: 'numberfield',
 	            name: 'phone',
-	            label: '电话：'
+	            label: '电话：',
+	           	cls : 'odd'
 	        },
 	        {
 	            xtype: 'emailfield',
 	            name: 'email',
-	            label: '邮箱：'
+	            label: '邮箱：',
+	            cls : 'even'
 	        },
 	        {
 	            xtype: 'textfield',
 	            name: 'address',
-	            label: '公司地址：'
+	            label: '公司地址：',
+	            cls : 'odd'
 	        }
     	],
     	fullscreen : true

@@ -68,7 +68,8 @@ background-color: #03111A;
 }
 
 .contactdetailview {
-	background:url('../../resources/images/icons/contact_back.png') no-repeat left top; 
+	/*background:url('../../resources/images/icons/contact_back.png') no-repeat left top; */
+	z-index: 2;
     background-attachment:fixed;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -88,6 +89,14 @@ background-color: #03111A;
 
 .contactdetailview .x-title {
 	width: 100%;
+}
+
+.contactdetailview .odd{
+	background-color: #302E2E;
+}
+
+.contactdetailview .even{
+	background-color: #444040;
 }
 
 .collectactive {
