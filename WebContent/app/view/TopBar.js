@@ -137,9 +137,8 @@ Ext.define("ECAT.view.TopBar", {
         		top : '30%',
         		right : '5%',
         		handler : function(){
-        			var list_img_fav = Ext.getCmp('list_img_fav'),
-        				imageDetailView = Ext.getCmp('imagedetailview'),
-        				store = list_img_fav.getStore(),
+        			var	imageDetailView = Ext.getCmp('imagedetailview'),
+        				store = Ext.getStore('store_fav'),
         				activeModel = imageDetailView.getActiveModel(),
         				className = this.element.dom.className;
     				// 已经被收藏
