@@ -4,8 +4,8 @@ Ext.define("ECAT.view.Image", {
     config: {
     	mode:true,
 		width: 768,
-		height: 1024/*,
-		draggable :new Ext.util.Draggable({'id':this.id})*/
+		height: 1024//,
+		//draggable :new Ext.util.Draggable({})
     },
 	beforeInitialize: function() {
         this.element.on({
@@ -23,7 +23,7 @@ Ext.define("ECAT.view.Image", {
     	me.setLeft((Ext.Viewport.getWindowWidth() - e.scale * item.getWidth() ) / 2);
 		me.setWidth(e.scale * item.getWidth());
     	me.setHeight(e.scale * item.getHeight());
-	},
+	}/*,
 	onTap : function(e) {
 		var me = this, 
 		target = e.getTarget(), 
@@ -41,7 +41,7 @@ Ext.define("ECAT.view.Image", {
     	me.setLeft((768 - e.scale * item.getWidth() ) / 2);
 		me.setWidth(e.scale * item.getWidth());
     	me.setHeight(e.scale * item.getHeight());
-	}
+	}*/
 });
 Ext.define("ECAT.view.ImageDetailView", {
     extend: 'Ext.Carousel',
@@ -89,7 +89,7 @@ Ext.define("ECAT.view.ImageDetailView", {
 	    var active = c.getActiveIndex(),
 	        direction = (c.getItems().indexOf(v) > c.getItems().indexOf(ov)) ? 'forward' : 'backward',
 	        container = (direction=='forward') ? c.getAt(active-me.interval-1) : c.getAt(active+me.interval+1),
-	        store = this.store,
+	        store = this.config.store,
 			index = this.getComponent(active).index;
 	    
 	    c.remove(container, false);
