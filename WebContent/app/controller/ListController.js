@@ -1,9 +1,7 @@
 Ext.define('ECAT.controller.ListController', {
     extend: 'Ext.app.Controller',
     requires: ['ECAT.view.ImageDetailView'],
-    xtype : 'listcontroller',
     config: {
-    	id : 'listController',
     	refs:{
     		listImgAll : '#list_img_all',
     		listImgItemize : '#list_img_itemize',
