@@ -13,9 +13,6 @@ Ext.define("ECAT.view.Menu", {
 	    	var btn_menu = Ext.getCmp('btn_menu'),
 	    		buttom_bar = Ext.getCmp('buttom_bar'),
 	    		top_bar = Ext.getCmp('top_bar');
-	    	if(!top_bar){
-	    		top_bar = Ext.Viewport.add(Ext.create('ECAT.view.TopBar'));
-	    	}
 	    	if(!buttom_bar){
 	    		buttom_bar = Ext.Viewport.add(Ext.create('ECAT.view.ButtomBar'));
 	    	}
