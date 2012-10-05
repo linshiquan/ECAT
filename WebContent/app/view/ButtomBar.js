@@ -12,7 +12,7 @@ Ext.define("ECAT.view.ButtomBar", {
     		id : 'btn_menu_bar',
     		xtype : 'button',
     		width: 70,
-	  		height: 60,
+	  		height: 80,
     	    left: '5%',
     	    top : 10,
     	    ui : 'plain',
@@ -31,8 +31,8 @@ Ext.define("ECAT.view.ButtomBar", {
     	},{
     		xtype : 'button',
     		id : 'btn_all',
-    		width: 60,
-	  		height: 60,
+    		width: 70,
+	  		height: 70,
     	    left: '25%',
     	    top : 10,
     	    ui : 'plain',
@@ -50,8 +50,8 @@ Ext.define("ECAT.view.ButtomBar", {
     	    }
     	},{
     		xtype : 'button',
-    		width: 60,
-	  		height: 60,
+    		width: 70,
+	  		height: 70,
     	    left: '45%',
     	    top : 10,
     	    ui : 'plain',
@@ -80,8 +80,8 @@ Ext.define("ECAT.view.ButtomBar", {
 	    	}
     	},{
     		xtype : 'button',
-    		width: 60,
-	  		height: 60,
+    		width: 70,
+	  		height: 70,
     	    left: '65%',
     	    top : 10,
     	    ui : 'plain',
@@ -106,8 +106,8 @@ Ext.define("ECAT.view.ButtomBar", {
     	    }
     	},{
     		xtype : 'button',
-    		width: 60,
-	  		height: 60,
+    		width: 70,
+	  		height: 70,
     	    left: '85%',
     	    top : 10,
     	    ui : 'plain',
