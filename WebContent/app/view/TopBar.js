@@ -153,10 +153,12 @@ Ext.define("ECAT.view.TopBar", {
     					var index = store.find('name', activeModel.get('name'));
     					store.removeAt(index);
     					this.removeCls('collectactive');
+    					Ext.Msg.alert('操作', '取消收藏成功。', Ext.emptyFn);
     				} else{
     					// 还未被收藏
     					store.add(activeModel.copy());
     					this.addCls('collectactive');
+    					Ext.Msg.alert('操作', '收藏成功。', Ext.emptyFn);
     				}
         			store.sync();
         		}
@@ -169,6 +171,7 @@ Ext.define("ECAT.view.TopBar", {
         		right : '5%',
         		text : '订货',
         		handler : function(){
+        			Ext.Msg.alert('操作', '待开发。', Ext.emptyFn);
         		}
         	}]
 		}]
