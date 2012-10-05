@@ -38,16 +38,9 @@ Ext.define("ECAT.view.ButtomBar", {
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
     	    	var topbar = Ext.getCmp('top_bar'),
-    	    		pl_main = Ext.getCmp('pl_main'),
-    	    		list_img = Ext.getCmp('list_img'),
-    	    		store = Ext.getStore(list_img.getConfig('store')),
-    	    		list_itemize = Ext.getCmp('list_itemize');
-    	    	list_itemize.hide();
-        		store.clearFilter(true);
-        		store.load();
-        		list_img.refresh();
+    	    		list_img_all = Ext.getCmp('list_img_all');
         		topbar.toImgListAll();
-    	    	Ext.Viewport.setActiveItem(pl_main); 
+    	    	Ext.Viewport.setActiveItem(list_img_all); 
     	    }
     	},{
     		xtype : 'button',
@@ -60,17 +53,20 @@ Ext.define("ECAT.view.ButtomBar", {
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
     	    	var topbar = Ext.getCmp('top_bar'),
-    	    		pl_main = Ext.getCmp('pl_main'), 
-    	    		list_itemize = Ext.getCmp('list_itemize');
+    	    		itemize = Ext.getCmp('itemize');
     	    	topbar.toItemizeList();
-    	    	Ext.Viewport.setActiveItem(pl_main);
-    	    	if(!list_itemize){
-    	    		list_itemize = Ext.create('ECAT.view.Itemize',{id : 'list_itemize'});
+    	    	if(!itemize){
+    	    		itemize = Ext.create('ECAT.view.Itemize',{id : 'itemize'});
     	    	}
-    	    	list_itemize.show({  
-	    			type: 'slide',  
-	    			direction: 'up'  
-	    		});
+    	    	Ext.getCmp('list_itemize').hide();
+    	    	Ext.Viewport.setActiveItem(itemize);
+    	    	setTimeout(function(){
+    	    		var list_itemize = Ext.getCmp('list_itemize');
+    	    		list_itemize.show({  
+    	    			type: 'slide',  
+    	    			direction: 'up'  
+    	    		});
+    	    	},500);
 	    	}
     	},{
     		xtype : 'button',

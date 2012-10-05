@@ -1,78 +1,47 @@
-Ext.define("ECAT.view.ImagePanel", {
-    extend: 'Ext.Panel',
-    requires: ['Ext.Img'],
-    config: {
-    	img:[],
-    	layout: {
-	        type: 'hbox'
-    	}
-    },
-    initialize: function() {
-        	this.callParent(arguments);
-			var records = this.getConfig('img');
-			for (var i = 0; i < records.length; i++) {
-					var src = "resources/images/xiao/"+ records[i] + ".png";
-					var img = Ext.create('Ext.Img', {
-						mode:true,
-					    height: 512,
-					    width: 256,
-					    src: src,
-					    fileName : records[i]
-					});
-					this.add([img]);
-			}
-    }
-});
-
 Ext.define("ECAT.view.ImgList", {
     extend: 'Ext.Container',
-    requires: ['Ext.Img','ECAT.store.Imgs'],
-    xtype : 'list_img',
+    requires: ['Ext.Img','ECAT.model.Img'], 
     config: {
     	width: 768,
     	height: 1024,
     	scrollable : 'vertical',
-    	store:	Ext.create('ECAT.store.Imgs'),
+    	store:	null,
     	layout: {
 	        type: 'vbox'
     	}
     },
     initialize: function() {
+    		if(this.config.store == null){
+    			throw 'store is null!';
+    		}
+        	this.store = this.config.store;
+			this.renderList();
         	this.callParent(arguments);
-			var store = Ext.getStore(this.getConfig('store')),
-			records = store.getRange(),
-			recordsLn = records.length,
-			columnNum = this.getConfig('columnNum'),
-			multiple = recordsLn / columnNum,
-			surplus = recordsLn % columnNum,
-			imgSrc = [],
-			panel;
-			for (var i = 0; i < recordsLn; i++) {
-				this.add({
-					xtype : 'container',
-					layout: 'hbox',
-					defaults: {
-						xtype: 'img',
-						mode:true,
-					    height: 512,
-					    width: 256,
-		            },
-			    	items : [{
-			    		fileName: records[index + k].get('name'),
-			    		src : "resources/images/xiao/"+ records[index + k].get('name') + ".png"
-			    		
-			    	},{
-			    		fileName: records[index + k].get('name'),
-			    		src : "resources/images/xiao/"+ records[index + k].get('name') + ".png"
-			    	},{
-			    		fileName: records[index + k].get('name'),
-			    		src : "resources/images/xiao/"+ records[index + k].get('name') + ".png"
-			    	}]
-				});
-			}
+			
     },
-    dosomething : function(){
+    renderList : function(){
+    	var records = this.store.getRange(),
+    		recordsLn = records.length,
+    		hc,i,img_name;
+		for (i = 0; i < recordsLn; i++) {
+			img_name = records[i].get('name');
+			if(i % 3 == 0){
+				hc = Ext.create('Ext.Container',{
+					layout: 'hbox'
+				});
+				this.add(hc);
+			}
+			hc.add(Ext.create('Ext.Img',{
+				mode:true,
+			    height: 512,
+			    width: 256,
+				src: ECAT.lib.getXiaoImgSrc(img_name),
+			    record : records[i]
+			}));
+		}
+    },
+    refreshList : function(){
+    	this.removeAll(true,true); 
+		this.renderList();
     }
 });
-
-

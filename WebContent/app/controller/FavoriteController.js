@@ -26,7 +26,8 @@ Ext.define('ECAT.controller.FavoriteController', {
     	alert('正在开发中');
     },
     delFav : function(img){
-    	var img_name = img.config.fileName,
+    	var record = img.config.record,
+    		img_name = record.get('name'),
     		del_imgs = this.getFav().del_imgs,
     		img_index = del_imgs.indexOf(img_name);
     		

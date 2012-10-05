@@ -58,14 +58,14 @@ Ext.define("ECAT.view.TopBar", {
                                     	var top_bar = this,
 	                        				list_img_fav = Ext.getCmp('list_img_fav'),
 	                        				del_imgs = list_img_fav.del_imgs,
-	                        				store = list_img_fav.getConfig('store'),
-	                        				record;
+	                        				store = list_img_fav.store,
+	                        				index;
 	                        			del_imgs.forEach(function(img){
-	                        				record = store.find('name', img);
-	                        				store.removeAt(record);
+	                        				index = store.find('name', img);
+	                        				store.removeAt(index);
 	                        			});
 	                        			store.sync();
-	                        			list_img_fav.refresh();
+	                        			list_img_fav.refreshList();
 	                        			top_bar.setBtnDel();
 	                        			
 	                        			top_bar.delActionSheet.hide();
@@ -119,7 +119,7 @@ Ext.define("ECAT.view.TopBar", {
         		text : '编辑',
         		handler : function(){
 //        			var list_img_fav = Ext.getCmp('list_img_fav'),
-//        				store = list_img_fav.getConfig('store');
+//        				store = list_img_fav.store;
 //        			store.add([ {name: '44',type : 3},
 //        			     	   {name: '45',type : 3},
 //        			    	   {name: '46',type : 3},
@@ -127,7 +127,7 @@ Ext.define("ECAT.view.TopBar", {
 //        			    	   {name: '48',type : 3},
 //        			    	   {name: '105',type : 3}]);
 //        			store.sync();
-//        			list_img_fav.refresh();
+//        			list_img_fav.refreshList();
         			var list_img_fav = Ext.getCmp('list_img_fav');
         				top_bar = Ext.getCmp('top_bar');
         			list_img_fav.isEdit = true;
@@ -135,6 +135,10 @@ Ext.define("ECAT.view.TopBar", {
         		}
         	}]
     	}]
+    },
+    initialize: function() {
+    	this.callParent(arguments);
+    	this.toImgListAll();
     },
     setTitle : function(title){
     	Ext.getCmp('title_tb').updateTitle(title);
@@ -162,7 +166,11 @@ Ext.define("ECAT.view.TopBar", {
     	Ext.getCmp('btn_finish').hide();
     },
     toImgListAll : function(){
-    	this.setTitle('全部('+this.img_total_count+')');
+    	if(!this.title_list_img_all){
+    		var count = Ext.getCmp('list_img_all').store.getCount();
+    		this.title_list_img_all = '全部('+count+')';
+    	}
+    	this.setTitle(this.title_list_img_all);
     	Ext.getCmp('btn_back').hide();
     	Ext.getCmp('btn_edit').hide();
     	Ext.getCmp('btn_del').hide();
