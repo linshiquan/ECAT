@@ -12,7 +12,10 @@ Ext.define('ECAT.view.ImgListFav', {
 			
     },
     refreshList : function(){
-        this.del_imgs = [];
+        this.clearEdit();
     	this.callParent(arguments);
+    },
+    clearEdit : function(){
+		this.del_imgs = [];
     }
 });

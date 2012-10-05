@@ -108,6 +108,7 @@ Ext.define("ECAT.view.TopBar", {
 		    			btn_menu_bar = Ext.getCmp('btn_menu_bar');
 				    btn_menu_bar.enable();
 					list_img_fav.isEdit = false;
+					list_img_fav.clearEdit();
 	    			top_bar.toFavorite();
         		}
         	},{
@@ -119,21 +120,12 @@ Ext.define("ECAT.view.TopBar", {
         		right : '5%',
         		text : '编辑',
         		handler : function(){
-//        			var list_img_fav = Ext.getCmp('list_img_fav'),
-//        				store = list_img_fav.store;
-//        			store.add([ {name: '44',type : 3},
-//        			     	   {name: '45',type : 3},
-//        			    	   {name: '46',type : 3},
-//        			    	   {name: '47',type : 3},
-//        			    	   {name: '48',type : 3},
-//        			    	   {name: '105',type : 3}]);
-//        			store.sync();
-//        			list_img_fav.refreshList();
         			var list_img_fav = Ext.getCmp('list_img_fav');
 	    				top_bar = Ext.getCmp('top_bar'),
 	        			btn_menu_bar = Ext.getCmp('btn_menu_bar');
 	    		    btn_menu_bar.disable();
 	    			list_img_fav.isEdit = true;
+	    			list_img_fav.clearEdit();
 	    			top_bar.toFavEdit();
         		}
         	},{
