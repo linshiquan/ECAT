@@ -135,5 +135,11 @@ Ext.define("ECAT.view.ImageDetailView", {
 		var lastModel = store.getAt(last);
 		container.setSrc(ECAT.lib.getDaImgSrc(lastModel.get('name')));
 		container.index = last;
+	},
+	getActiveModel : function(){
+	    var active = c.getActiveIndex(),
+		store = this.store, 
+		index = this.getComponent(active).index;
+		return store.getAt(index);
 	}
 });

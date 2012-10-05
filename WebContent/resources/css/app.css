@@ -90,6 +90,9 @@ background-color: #03111A;
 	width: 100%;
 }
 
+.collectactive {
+	background-image : -webkit-gradient(linear,50% 0,50% 100%,color-stop(0%,#061F31),color-stop(10%,#092E47),color-stop(65%,#0B3C5E),color-stop(100%,#0C3E60));
+}
 .x-button.black{
 	color : white;
 	background-image: -webkit-linear-gradient(top, #313131,#1A1919 3%,black);
