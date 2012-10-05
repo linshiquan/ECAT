@@ -46,12 +46,18 @@ Ext.define("ECAT.view.TopBar", {
                     	top_bar.delActionSheet = Ext.Viewport.add({
                             xtype: 'actionsheet',
                             defaults : {
-                            	xtype : 'button'
-//                            	margin : '50 50'
+                            	xtype : 'button',
+                            	margin : '20 20'
                             },
                             items: [{
+                            		xtype : 'title',
+					        		cls : 'comfirmdel',
+					        		height: 40,
+					        		title : '确认删除操作'
+                                },{
                                     text: '删除',
                                     ui: 'decline',
+                                    height : 40,
                                     scope: top_bar,
                                     handler: function() {
                                     	var top_bar = this,
@@ -72,6 +78,7 @@ Ext.define("ECAT.view.TopBar", {
                                 },{
                                     text: '取消',
                                     cls : 'black',
+                                    height : 40,
                                     scope: top_bar,
                                     handler: function() {
                                     	var top_bar = this;

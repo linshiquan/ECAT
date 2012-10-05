@@ -110,6 +110,7 @@ Ext.define("ECAT.view.ButtomBar", {
     	    		}
     	    		list_img_fav = Ext.getCmp('list_img_fav');
     	    		list_img_fav.isEdit = false;
+    	    		list_img_fav.clearEdit();
     	    		list_img_fav.setTop(90);
     	    		topbar.toFavorite();
     	    		Ext.Viewport.setActiveItem(favorite);

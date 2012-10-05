@@ -22,6 +22,12 @@ background-color: white;
 	-webkit-background-size: 768px 20px; 
 }
 
+.x-title.comfirmdel {
+	font-size: 1em;
+	color:white;
+}
+
+
 .x-title.toptitle{
 font-size: 2.0em;
 color:white;
