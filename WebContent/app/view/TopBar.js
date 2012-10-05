@@ -147,7 +147,8 @@ Ext.define("ECAT.view.TopBar", {
         			var	imageDetailView = Ext.getCmp('imagedetailview'),
         				store = Ext.getStore('store_fav'),
         				activeModel = imageDetailView.getActiveModel(),
-        				className = this.element.dom.className;
+        				className = this.element.dom.className,
+        				list_img_fav = Ext.getCmp('list_img_fav');
     				// 已经被收藏
     				if(className.search('collectactive') != -1){
     					var index = store.find('name', activeModel.get('name'));
@@ -161,6 +162,11 @@ Ext.define("ECAT.view.TopBar", {
     					Ext.Msg.alert('操作', '收藏成功。', Ext.emptyFn);
     				}
         			store.sync();
+        			if(list_img_fav){
+        				setTimeout(function(){
+        					Ext.getCmp('list_img_fav').refreshList();
+        				},10);
+        			}
         		}
        		},{
         		id : 'btn_order',
