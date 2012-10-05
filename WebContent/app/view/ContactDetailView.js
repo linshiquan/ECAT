@@ -8,11 +8,6 @@ Ext.define("ECAT.view.ContactDetailView", {
 	       readOnly: true
 	   	},
     	items: [
-    		{
-			    xtype: 'titlebar',
-			    docked: 'top',
-			    title: '联系方式'
-			},
 	        {
 	            xtype: 'numberfield',
 	            name: 'phone',
