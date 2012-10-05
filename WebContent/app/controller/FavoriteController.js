@@ -4,7 +4,11 @@ Ext.define('ECAT.controller.FavoriteController', {
     config: {
     	refs:{
     		fav : '#list_img_fav',
-    		topb : '#top_bar'
+    		topb : '#top_bar',
+    		listController : {
+    			xtype : 'listcontroller',
+    			autoCreate: true
+    		}
     	},
     	control: {
             '#list_img_fav img': {
@@ -23,7 +27,9 @@ Ext.define('ECAT.controller.FavoriteController', {
     	
     },
     showImg : function(img){
-    	alert('正在开发中');
+    	var list = this.getFav(),
+    	 	topbar = Ext.getCmp('top_bar');
+    	ECAT.lib.showImageDetail(img, list, '收藏',  topbar.toFavorite);
     },
     delFav : function(img){
     	var record = img.config.record,
