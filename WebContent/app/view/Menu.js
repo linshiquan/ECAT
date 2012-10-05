@@ -8,7 +8,7 @@ Ext.define("ECAT.view.Menu", {
 	    bottom : 0,
 	    ui : 'plain',
 	    icon : 'resources/images/icons/up_h.png',
-	    iconCls : 'btn_up_icon',
+	    iconCls : 'icon-btn-menu',
 	    handler : function(){
 	    	var btn_menu = Ext.getCmp('btn_menu'),
 	    		buttom_bar = Ext.getCmp('buttom_bar'),

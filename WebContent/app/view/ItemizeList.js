@@ -6,7 +6,7 @@ Ext.define('ECAT.view.ItemizeList', {
     	modal : true,
     	top : 90,
 	    width: 768,
-    	height: 814,
+    	height: 834,
     	scrollable : false,
     	cls : 'touming',
     	store : Ext.create('Ext.data.Store', {

@@ -29,12 +29,6 @@ color:white;
 	-webkit-background-size: 768px 90px; 
 }
 
-.x-button.x-button-plain .x-button-icon {
--webkit-background-size: 90px 90px;;  
-width: 90px;
-height: 90px;
-	
-}
 
 .x-button.x-button-plain{
 background: none;
@@ -48,11 +42,21 @@ height: 1.9em;
 padding: 0em 0em;
 }
 
-.x-button .btn_up_icon {
+.x-button.x-button-plain .icon-btn-menu {
 	background-image: url('resources/images/icons/up_h.png');
-	-webkit-background-size: 110px 110px;  
-	width: 90px;
-	height: 90px;
+	-webkit-background-size: 70px 80px;  
+	width: 70px;
+	height: 80px;
+	background-repeat: no-repeat;
+	background-position: center;
+	display: block;
+}
+
+.x-button.x-button-plain .icon-btn-bar {
+	background-image: url('resources/images/icons/up_h.png');
+	-webkit-background-size: 70px 70px;  
+	width: 70px;
+	height: 70px;
 	background-repeat: no-repeat;
 	background-position: center;
 	display: block;
