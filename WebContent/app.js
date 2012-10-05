@@ -14,7 +14,7 @@ Ext.application({
     			return "resources/images/da/"+ img_name + ".png";
     		},
     		getIconSrc : function(icon_name){
-    			return "resources/images/icons/"+ img_name + ".png";
+    			return "resources/images/icons/"+ icon_name + ".png";
     		},
     		showImageDetail: function(img, panel, list, backText, callback, callbackArgs){
 		    	var record = img.config.record,

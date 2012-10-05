@@ -6,6 +6,13 @@ z-index: 100;
 background-color: white;
 }
 
+.x-container.jiantou {
+	background-image: url('/ecat/resources/images/icons/jiantou.png');
+	background-repeat: no-repeat;
+	background-position: center;
+	-webkit-background-size: 70px 10px; 
+}
+
 
 .x-container.topstrip {
 	background-image: url('/ecat/resources/images/icons/topstrip.png');
