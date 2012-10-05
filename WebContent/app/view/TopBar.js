@@ -162,7 +162,17 @@ Ext.define("ECAT.view.TopBar", {
     				}
         			store.sync();
         		}
-    		}]
+    		},{
+        		id : 'btn_order',
+        		xtype : 'button',
+        		hidden : true,
+        		cls : 'black',
+        		top : '30%',
+        		right : '5%',
+        		text : '订货',
+        		handler : function(){
+        		}
+        	}]
 		}]
 	},
     initialize: function() {
@@ -192,6 +202,7 @@ Ext.define("ECAT.view.TopBar", {
     	Ext.getCmp('btn_del').hide();
     	Ext.getCmp('btn_finish').hide();
     	Ext.getCmp('btn_collect').hide();
+    	Ext.getCmp('btn_order').hide();
     },
     toItemizeList : function(){
     	this.setTitle('分类选择');
@@ -200,6 +211,7 @@ Ext.define("ECAT.view.TopBar", {
     	Ext.getCmp('btn_del').hide();
     	Ext.getCmp('btn_finish').hide();
     	Ext.getCmp('btn_collect').hide();
+    	Ext.getCmp('btn_order').hide();
     },
     toImgListAll : function(){
     	if(!this.title_list_img_all){
@@ -212,6 +224,7 @@ Ext.define("ECAT.view.TopBar", {
     	Ext.getCmp('btn_del').hide();
     	Ext.getCmp('btn_finish').hide();
     	Ext.getCmp('btn_collect').hide();
+    	Ext.getCmp('btn_order').hide();
     },
     toFavorite : function(){
     	var title = '收藏夹',
@@ -225,6 +238,7 @@ Ext.define("ECAT.view.TopBar", {
     	Ext.getCmp('btn_del').hide();
     	Ext.getCmp('btn_finish').hide();
     	Ext.getCmp('btn_collect').hide();
+    	Ext.getCmp('btn_order').hide();
     },
     toFavEdit : function(){
     	var title = '收藏夹编辑';
@@ -235,6 +249,7 @@ Ext.define("ECAT.view.TopBar", {
     	this.setBtnDel();
     	Ext.getCmp('btn_finish').show();
     	Ext.getCmp('btn_collect').hide();
+    	Ext.getCmp('btn_order').hide();
     },
     setBtnDel : function(count){
     	var btn_del = Ext.getCmp('btn_del'),
@@ -268,8 +283,13 @@ Ext.define("ECAT.view.TopBar", {
   		Ext.getCmp('btn_edit').hide();
  		Ext.getCmp('btn_del').hide();
    		Ext.getCmp('btn_finish').hide();
+   		Ext.getCmp('btn_order').hide();
    		
    		var btn_collect = Ext.getCmp('btn_collect');
    		btn_collect.show();
+     },
+     toContactDetailView : function(){
+     	this.setTitle('联系方式');
+     	Ext.getCmp('btn_order').show();
      }
 });

@@ -109,21 +109,19 @@ Ext.define("ECAT.view.ButtomBar", {
     	    icon : 'resources/images/icons/link_h.png',
     	    iconCls : 'btn_up_icon',
     	    handler : function(){
+				var topbar = Ext.getCmp('top_bar'),
+					contactDetailView = Ext.getCmp('contactDetailView');
+				topbar.toContactDetailView();
+				if(!contactDetailView){
+					contactDetailView = Ext.create("ECAT.view.ContactDetailView");
+				}
 				Ext.Viewport.animateActiveItem(
-					Ext.create("ECAT.view.ContactDetailView"),
+					contactDetailView,
 					{  
-				   		type: 'slide',  
+			   			type: 'slide',  
 						direction: 'left'  
 					}
 				);
-				var btn_menu = Ext.getCmp('btn_menu'),
-					buttom_bar = Ext.getCmp('buttom_bar'),
-					top_bar = Ext.getCmp('top_bar'),
-	    			btn_menu_bar = Ext.getCmp('btn_menu_bar');
-	    		btn_menu_bar.enable();
-	//			btn_menu.show();
-	//			buttom_bar.hide();
-	//			top_bar.hide();
     	    }
     	}]
     }

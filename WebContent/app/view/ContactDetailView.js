@@ -2,6 +2,7 @@ Ext.define("ECAT.view.ContactDetailView", {
     extend: 'Ext.form.Panel',
     xtype:'contactdetailview',
     config: {
+    	id : 'contactDetailView',
     	baseCls : 'contactdetailview',
     	defaults: {
 	       readOnly: true
