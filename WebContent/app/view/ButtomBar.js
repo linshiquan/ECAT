@@ -1,6 +1,6 @@
 Ext.define("ECAT.view.ButtomBar", {
     extend: 'Ext.Container',
-    requires: ['Ext.Button','ECAT.view.Itemize','ECAT.view.Favorite'], //'ECAT.view.Main',
+    requires: ['Ext.Button','ECAT.view.Itemize','ECAT.view.Favorite'],
     config : { 
     	id : 'buttom_bar',
     	cls : 'touming toolbar',
