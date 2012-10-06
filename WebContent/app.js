@@ -8,10 +8,10 @@ Ext.application({
     	Ext.ns('ECAT.lib');
     	Ext.applyIf(ECAT.lib,{
     		getXiaoImgSrc : function(img_name){
-    			return "resources/images/xiao/"+ img_name + ".png";
+    			return "resources/images/xiao/"+ img_name + ".jpg";
     		},
     		getDaImgSrc : function(img_name){
-    			return "resources/images/da/"+ img_name + ".png";
+    			return "resources/images/da/"+ img_name + ".jpg";
     		},
     		getIconSrc : function(icon_name){
     			return "resources/images/icons/"+ icon_name + ".png";
